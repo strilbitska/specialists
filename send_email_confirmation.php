@@ -5,7 +5,7 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 require_once 'config/database.php';
-require_once 'smtp_mailer.php'; // Підключаємо SMTP
+require_once 'send_email_via_s_m_t_p.php'; // Підключаємо SMTP
 
 // Логування для відладки
 error_reporting(E_ALL);
