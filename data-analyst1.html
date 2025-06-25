@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Андрій Ковальчук — Data Analyst</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навігація -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+        </div>
+    </nav>
+
+    <!-- Профіль -->
+    <header class="bg-light text-center py-5">
+        <div class="container">
+            <img src="img/data-analyst.jpg" alt="Data Analyst" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+            <h1 class="display-4">Андрій Ковальчук</h1>
+            <p class="lead text-muted">Data Analyst | без досвіду</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:andrii.data@example.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Написати
+                </a>
+                <a href="#calendar" class="btn btn-outline-primary">
+                    <i class="fas fa-calendar"></i> Забронювати консультацію
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Про мене -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-user"></i> Про мене</h2>
+                    <p class="lead">Data Analyst з фокусом на бізнес-аналітиці та візуалізації даних.</p>
+                    <p>Спеціалізуюсь на аналізі великих масивів даних, створенні дашбордів та прогнозній аналітиці. Працюю з Python, SQL, Power BI та Tableau.</p>
+                </section>
+
+                <!-- Проекти -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-project-diagram"></i> Ключові проекти</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Аналіз продажів</h5>
+                                    <p class="text-muted">Python, Pandas, Power BI</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> Збільшення конверсії на 40%</li>
+                                        <li><i class="fas fa-check text-success"></i> Оптимізація воронки продажів</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Прогнозування попиту</h5>
+                                    <p class="text-muted">Python, scikit-learn, SQL</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> Точність прогнозу 87%</li>
+                                        <li><i class="fas fa-check text-success"></i> Оптимізація складських запасів</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="col-lg-4">
+                <!-- Навички -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-laptop-code"></i> Технічні навички</h3>
+                        <div class="mb-3">
+                            <p class="mb-1">Python</p>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="mb-1">SQL</p>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="mb-1">Power BI</p>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Послуги та ціни -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Аналіз даних
+                                <span class="badge bg-primary rounded-pill">від 800$</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Створення дашбордів
+                                <span class="badge bg-primary rounded-pill">від 500$</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Консультація
+                                <span class="badge bg-primary rounded-pill">100$/год</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Календар -->
+                <div class="card mb-4" id="calendar">
+                    <div class="card-body">
+                        <h3><i class="fas fa-calendar-alt"></i> Забронювати консультацію</h3>
+                        <form id="bookingForm">
+                            <!-- Аналогичная форма бронирования как в hr.html -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2025 Андрій Ковальчук | Data Analyst</p>
+            <div class="mt-2">
+                <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-kaggle"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
+````
+
+Хотите, чтобы я показал код для DevOps инженера?
+
+Обнаружен похожий код с 5 типами лицензий

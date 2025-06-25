@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Віктор Романенко — DevOps інженер</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навігація -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+        </div>
+    </nav>
+
+    <!-- Профіль -->
+    <header class="bg-light text-center py-5">
+        <div class="container">
+            <img src="img/devops.jpg" alt="DevOps інженер" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+            <h1 class="display-4">Віктор Романенко</h1>
+            <p class="lead text-muted">DevOps інженер | 5+ років досвіду</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:viktor.devops@example.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Написати
+                </a>
+                <a href="#calendar" class="btn btn-outline-primary">
+                    <i class="fas fa-calendar"></i> Забронювати консультацію
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Про мене -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-user"></i> Про мене</h2>
+                    <p class="lead">DevOps інженер з досвідом автоматизації та оптимізації інфраструктури.</p>
+                    <p>Спеціалізуюсь на налаштуванні CI/CD, контейнеризації, моніторингу та безпеці. Працюю з Docker, Kubernetes, AWS та Azure.</p>
+                </section>
+
+                <!-- Проекти -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-code-branch"></i> Ключові проекти</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Міграція в Kubernetes</h5>
+                                    <p class="text-muted">Docker, K8s, AWS</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> Зменшення часу розгортання на 70%</li>
+                                        <li><i class="fas fa-check text-success"></i> Автоматизація масштабування</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">CI/CD Pipeline</h5>
+                                    <p class="text-muted">Jenkins, GitLab CI, Terraform</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> Автоматизація тестування</li>
+                                        <li><i class="fas fa-check text-success"></i> Infrastructure as Code</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="col-lg-4">
+                <!-- Технічні навички -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-tools"></i> Технічні навички</h3>
+                        <div class="mb-3">
+                            <p class="mb-1">Docker/Kubernetes</p>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="mb-1">CI/CD</p>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <p class="mb-1">Cloud (AWS/Azure)</p>
+                            <div class="progress">
+                                <div class="progress-bar" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Послуги та ціни -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                CI/CD налаштування
+                                <span class="badge bg-primary rounded-pill">від 1000$</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Cloud міграція
+                                <span class="badge bg-primary rounded-pill">від 2000$</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Консультація
+                                <span class="badge bg-primary rounded-pill">150$/год</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Календар -->
+                <div class="card mb-4" id="calendar">
+                    <div class="card-body">
+                        <h3><i class="fas fa-calendar-alt"></i> Забронювати консультацію</h3>
+                        <form id="bookingForm">
+                            <div class="mb-3">
+                                <label class="form-label">Оберіть дату</label>
+                                <input type="date" class="form-control" id="bookingDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Оберіть час</label>
+                                <select class="form-select" id="bookingTime" required>
+                                    <option value="">Виберіть час</option>
+                                    <option>09:00</option>
+                                    <option>11:00</option>
+                                    <option>14:00</option>
+                                    <option>16:00</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Тип консультації</label>
+                                <select class="form-select" id="consultationType" required>
+                                    <option value="">Виберіть тип</option>
+                                    <option>CI/CD Pipeline</option>
+                                    <option>Cloud міграція</option>
+                                    <option>Kubernetes</option>
+                                    <option>Загальна консультація</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100" onclick="showBookingModal()">Забронювати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2025 Віктор Романенко | DevOps інженер</p>
+            <div class="mt-2">
+                <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-docker"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Олександр Петренко — Junior Python Developer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навігація -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+        </div>
+    </nav>
+
+    <!-- Профіль -->
+    <header class="bg-light text-center py-5">
+        <div class="container">
+            <img src="developer.png" alt="Python Developer" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+            <h1 class="display-4">Олександр Петренко</h1>
+            <p class="lead text-muted">Junior Python Developer | &lt; 1 року досвіду</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:petrenko.dev@example.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Написати
+                </a>
+                <a href="https://github.com/petrenko-dev" class="btn btn-dark">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <!-- Основна інформація -->
+            <div class="col-lg-8">
+                <!-- Про мене -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-user"></i> Про мене</h2>
+                    <p class="lead">Початківець Python розробник, захоплений технологіями та програмуванням.</p>
+                    <p>Активно вивчаю Python, Django та працюю над власними проектами. Маю базові знання HTML, CSS та SQL.</p>
+                </section>
+
+                <!-- Резюме -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-file-pdf"></i> Резюме</h2>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-file-pdf text-danger fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Резюме Олександра Петренка</h5>
+                                    <p class="card-text text-muted mb-2">Junior Python Developer | Початковий досвід роботи</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-muted"><i class="fas fa-clock"></i> Оновлено: Квітень 2025</span>
+                                <a href="Petrenko.pdf" class="btn btn-primary" download>
+                                    <i class="fas fa-download me-2"></i>Завантажити PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Проекти -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-code"></i> Мої проекти</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Телеграм бот для нагадувань</h5>
+                                    <p class="card-text">Простий бот на Python для створення та керування нагадуваннями.</p>
+                                    <div class="d-flex gap-2">
+                                        <span class="badge bg-primary">Python</span>
+                                        <span class="badge bg-secondary">Telegram API</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">Веб-скрапер новин</h5>
+                                    <p class="card-text">Парсер новин з використанням Beautiful Soup 4.</p>
+                                    <div class="d-flex gap-2">
+                                        <span class="badge bg-primary">Python</span>
+                                        <span class="badge bg-secondary">BS4</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="col-lg-4">
+                <!-- Навички -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-laptop-code"></i> Технічні навички</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Python
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 70%"></div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                Django
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 40%"></div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                SQL
+                                <div class="progress mt-2">
+                                    <div class="progress-bar" style="width: 30%"></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Освіта -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-graduation-cap"></i> Освіта</h3>
+                        <div class="mb-3">
+                            <h5 class="h6">Курс "Python Developer"</h5>
+                            <p class="text-muted mb-1">Beetroot Academy</p>
+                            <small class="text-muted">2024 - 2025</small>
+                        </div>
+                        <div class="mb-3">
+                            <h5 class="h6">Комп'ютерні науки</h5>
+                            <p class="text-muted mb-1">Київський політехнічний інститут</p>
+                            <small class="text-muted">2021 - 2025</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Контакти -->
+                <div class="card">
+                    <div class="card-body">
+                        <h3><i class="fas fa-address-card"></i> Контакти</h3>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2">
+                                <i class="fas fa-envelope me-2"></i>
+                                <a href="mailto:petrenko.dev@example.com">petrenko.dev@example.com</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="fab fa-linkedin me-2"></i>
+                                <a href="#">LinkedIn</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="fab fa-github me-2"></i>
+                                <a href="#">GitHub</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2025 Олександр Петренко | Junior Python Developer</p>
+            <div class="mt-2">
+                <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

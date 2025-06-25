@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Денис Мороз — Відеограф</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навігація -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+        </div>
+    </nav>
+
+    <!-- Профіль -->
+    <header class="bg-light text-center py-5">
+        <div class="container">
+            <img src="img/videographer.jpg" alt="Відеограф" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+            <h1 class="display-4">Денис Мороз</h1>
+            <p class="lead text-muted">Відеограф | 6+ років досвіду</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:d.moroz@example.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Написати
+                </a>
+                <a href="#calendar" class="btn btn-outline-primary">
+                    <i class="fas fa-calendar"></i> Забронювати зйомку
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Про мене -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-user"></i> Про мене</h2>
+                    <p class="lead">Професійний відеограф з досвідом зйомки комерційних, весільних та корпоративних відео.</p>
+                    <p>Спеціалізуюсь на створенні рекламних роликів, музичних кліпів та документальних фільмів. Працюю з професійним обладнанням Canon та DJI.</p>
+                </section>
+
+                <!-- Портфоліо -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-video"></i> Портфоліо</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/cCSkv62weI0?si=bWZi_mt-p8BpYwTD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Рекламний ролик</h5>
+                                    <p class="card-text">Промо-відео для бренду одягу</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card">
+                                <div class="ratio ratio-16x9">
+                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/HLsS5eZNuss?si=Hmei4sY_bVGiY5WJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">Весільне відео</h5>
+                                    <p class="card-text">Романтична історія кохання</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="col-lg-4">
+                <!-- Послуги та ціни -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Весільна відеозйомка
+                                <span class="badge bg-primary rounded-pill">від 800$</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Рекламний ролик
+                                <span class="badge bg-primary rounded-pill">від 500$</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Корпоративне відео
+                                <span class="badge bg-primary rounded-pill">від 600$</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Календар -->
+                <div class="card mb-4" id="calendar">
+                    <div class="card-body">
+                        <h3><i class="fas fa-calendar-alt"></i> Забронювати зйомку</h3>
+                        <form id="bookingForm">
+                            <div class="mb-3">
+                                <label class="form-label">Оберіть дату</label>
+                                <input type="date" class="form-control" id="bookingDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Тип зйомки</label>
+                                <select class="form-select" id="shootingType" required>
+                                    <option value="">Виберіть тип</option>
+                                    <option>Весільна відеозйомка</option>
+                                    <option>Рекламний ролик</option>
+                                    <option>Корпоративне відео</option>
+                                    <option>Музичний кліп</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100" onclick="showBookingModal()">Забронювати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2025 Денис Мороз | Відеограф</p>
+            <div class="mt-2">
+                <a href="#" class="text-white mx-2"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-vimeo"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

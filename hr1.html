@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Ірина Ткачук — HR-менеджер</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <!-- Навігація -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+        </div>
+    </nav>
+
+    <!-- Профіль -->
+    <header class="bg-light text-center py-5">
+        <div class="container">
+            <?php
+                require_once 'config/database.php';
+                $stmt = $pdo->prepare("SELECT * FROM specialists WHERE id = 3"); // ID для HR-менеджера
+                $stmt->execute();
+                $specialist = $stmt->fetch();
+            ?>
+            <img src="<?php echo htmlspecialchars($specialist['photo_url']); ?>" alt="HR менеджер" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+            <h1 class="display-4"><?php echo htmlspecialchars($specialist['name']); ?></h1>
+            <p class="lead text-muted">HR-менеджер | <?php echo $specialist['experience_years']; ?>+ років досвіду</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:<?php echo htmlspecialchars($specialist['email']); ?>" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Написати
+                </a>
+                <a href="#calendar" class="btn btn-outline-primary">
+                    <i class="fas fa-calendar"></i> Забронювати консультацію
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <!-- Основна інформація -->
+            <div class="col-lg-8">
+                <!-- Про мене -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-user"></i> Про мене</h2>
+                    <p class="lead"><?php echo htmlspecialchars($specialist['description']); ?></p>
+                </section>
+
+                <!-- Відгуки -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-comments"></i> Відгуки клієнтів</h2>
+                    <div class="row">
+                        <?php
+                            $reviews = $pdo->prepare("SELECT * FROM reviews WHERE specialist_id = 3 ORDER BY created_at DESC LIMIT 4");
+                            $reviews->execute();
+                            while($review = $reviews->fetch()):
+                        ?>
+                        <div class="col-md-6 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div>
+                                            <h6 class="mb-0"><?php echo htmlspecialchars($review['client_name']); ?></h6>
+                                            <small class="text-muted"><?php echo date('d.m.Y', strtotime($review['created_at'])); ?></small>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">
+                                        <i class="fas fa-quote-left text-primary me-2"></i>
+                                        <?php echo htmlspecialchars($review['comment']); ?>
+                                    </p>
+                                    <div class="text-warning">
+                                        <?php for($i = 0; $i < $review['rating']; $i++): ?>
+                                            <i class="fas fa-star"></i>
+                                        <?php endfor; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php endwhile; ?>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="col-lg-4">
+                <!-- Послуги та ціни -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
+                        <ul class="list-group list-group-flush">
+                            <?php
+                                $services = $pdo->prepare("SELECT * FROM services WHERE specialist_id = 3");
+                                $services->execute();
+                                while($service = $services->fetch()):
+                            ?>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <?php echo htmlspecialchars($service['service_name']); ?>
+                                <span class="badge bg-primary rounded-pill">від <?php echo $service['price']; ?>$</span>
+                            </li>
+                            <?php endwhile; ?>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Календар -->
+                <div class="card mb-4" id="calendar">
+                    <div class="card-body">
+                        <h3><i class="fas fa-calendar-alt"></i> Забронювати консультацію</h3>
+                        <form id="bookingForm" action="api/book_consultation.php" method="POST">
+                            <input type="hidden" name="specialist_id" value="3">
+                            <div class="mb-3">
+                                <label class="form-label">Оберіть дату</label>
+                                <input type="date" class="form-control" id="bookingDate" name="booking_date" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Оберіть час</label>
+                                <select class="form-select" id="bookingTime" name="booking_time" required>
+                                    <option value="">Виберіть час</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="16:00">16:00</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Тип консультації</label>
+                                <select class="form-select" id="consultationType" name="service_type" required>
+                                    <option value="">Виберіть тип</option>
+                                    <?php
+                                        $services->execute(); // Повторно используем подготовленный запрос
+                                        while($service = $services->fetch()):
+                                    ?>
+                                    <option value="<?php echo $service['id']; ?>"><?php echo htmlspecialchars($service['service_name']); ?></option>
+                                    <?php endwhile; ?>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100" onclick="showBookingModal()">Забронювати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="bookingModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Введіть ваші дані</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="userDataForm">
+                        <div class="mb-3">
+                            <label class="form-label">Ваше ім'я</label>
+                            <input type="text" class="form-control" id="userName" name="client_name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" id="userEmail" name="client_email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Телефон</label>
+                            <input type="tel" class="form-control" id="userPhone" name="client_phone" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                    <button type="button" class="btn btn-primary" onclick="confirmBooking()">Підтвердити</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2025 <?php echo htmlspecialchars($specialist['name']); ?> | HR-менеджер</p>
+            <div class="mt-2">
+                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-telegram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let bookingModal;
+        
+        $(document).ready(function() {
+            bookingModal = new bootstrap.Modal(document.getElementById('bookingModal'));
+            
+            $('#bookingForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                let formData = new FormData(this);
+                formData.append('client_name', $('#userName').val());
+                formData.append('client_email', $('#userEmail').val());
+                formData.append('client_phone', $('#userPhone').val());
+                
+                $.ajax({
+                    url: 'api/book_consultation.php',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        try {
+                            let result = JSON.parse(response);
+                            if(result.success) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Консультацію заброньовано!',
+                                    text: `Дякуємо! Ми надішлемо підтвердження на ваш email.`,
+                                    confirmButtonText: 'Ок'
+                                });
+                                bookingModal.hide();
+                                $('#bookingForm')[0].reset();
+                                $('#userDataForm')[0].reset();
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Помилка!',
+                                    text: result.error || 'Щось пішло не так',
+                                    confirmButtonText: 'Ок'
+                                });
+                            }
+                        } catch(e) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Помилка!',
+                                text: 'Помилка обробки відповіді сервера',
+                                confirmButtonText: 'Ок'
+                            });
+                        }
+                    }
+                });
+            });
+        });
+
+        function showBookingModal() {
+            const date = $('#bookingDate').val();
+            const time = $('#bookingTime').val();
+            const type = $('#consultationType').val();
+
+            if (!date || !time || !type) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Увага!',
+                    text: 'Будь ласка, заповніть всі поля форми бронювання',
+                    confirmButtonText: 'Ок'
+                });
+                return;
+            }
+
+            bookingModal.show();
+        }
+
+        function confirmBooking() {
+            const name = $('#userName').val();
+            const email = $('#userEmail').val();
+            const phone = $('#userPhone').val();
+
+            if (!name || !email || !phone) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Увага!',
+                    text: 'Будь ласка, заповніть всі поля',
+                    confirmButtonText: 'Ок'
+                });
+                return;
+            }
+
+            $('#bookingForm').submit();
+        }
+    </script>
+</body>
+</html>

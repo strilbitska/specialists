@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Софія Мельник — SMM-менеджер</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Навігація -->
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+        </div>
+    </nav>
+
+    <!-- Профіль -->
+    <header class="bg-light text-center py-5">
+        <div class="container">
+            <img src="img/smm.jpg" alt="SMM менеджер" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+            <h1 class="display-4">Софія Мельник</h1>
+            <p class="lead text-muted">SMM-менеджер | 5+ років досвіду</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="mailto:sofia.smm@example.com" class="btn btn-primary">
+                    <i class="fas fa-envelope"></i> Написати
+                </a>
+                <a href="#calendar" class="btn btn-outline-primary">
+                    <i class="fas fa-calendar"></i> Забронювати консультацію
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Про мене -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-user"></i> Про мене</h2>
+                    <p class="lead">SMM-спеціаліст з досвідом просування брендів у соціальних мережах.</p>
+                    <p>Спеціалізуюсь на створенні контент-стратегій, таргетованій рекламі та аналітиці соціальних мереж. Працюю з Instagram, Facebook, TikTok та Telegram.</p>
+                </section>
+
+                <!-- Кейси -->
+                <section class="mb-5">
+                    <h2><i class="fas fa-briefcase"></i> Успішні кейси</h2>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <img src="img/smm-case1.jpg" class="card-img-top" alt="Кейс 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">Бренд одягу</h5>
+                                    <p class="card-text">Збільшення охоплення на 300% за 3 місяці</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> +50k підписників</li>
+                                        <li><i class="fas fa-check text-success"></i> x3 продажі</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100">
+                                <img src="img/smm-case2.jpg" class="card-img-top" alt="Кейс 2">
+                                <div class="card-body">
+                                    <h5 class="card-title">Ресторанний бізнес</h5>
+                                    <p class="card-text">Запуск бренду в соціальних мережах</p>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> 20k органічних підписників</li>
+                                        <li><i class="fas fa-check text-success"></i> 45% конверсія в замовлення</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Сайдбар -->
+            <div class="col-lg-4">
+                <!-- Послуги та ціни -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Ведення соцмереж
+                                <span class="badge bg-primary rounded-pill">від 500$/міс</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Консультація
+                                <span class="badge bg-primary rounded-pill">100$/год</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Аудит соцмереж
+                                <span class="badge bg-primary rounded-pill">від 200$</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Календар -->
+                <div class="card mb-4" id="calendar">
+                    <div class="card-body">
+                        <h3><i class="fas fa-calendar-alt"></i> Забронювати консультацію</h3>
+                        <form id="bookingForm">
+                            <div class="mb-3">
+                                <label class="form-label">Оберіть дату</label>
+                                <input type="date" class="form-control" id="bookingDate" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Оберіть час</label>
+                                <select class="form-select" id="bookingTime" required>
+                                    <option value="">Виберіть час</option>
+                                    <option>10:00</option>
+                                    <option>12:00</option>
+                                    <option>15:00</option>
+                                    <option>17:00</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Тип консультації</label>
+                                <select class="form-select" id="consultationType" required>
+                                    <option value="">Виберіть тип</option>
+                                    <option>Стратегія просування</option>
+                                    <option>Таргетована реклама</option>
+                                    <option>Контент-план</option>
+                                    <option>Загальна консультація</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary w-100" onclick="showBookingModal()">Забронювати</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">© 2025 Софія Мельник | SMM-менеджер</p>
+            <div class="mt-2">
+                <a href="#" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="text-white mx-2"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

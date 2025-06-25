@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Підбір спеціалістів</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Бокове меню -->
+        <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
+            <!-- Контент бокового меню буде завантажено тут -->
+        </div>
+
+        <!-- Основний контент -->
+        <div class="content p-3 flex-grow-1">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <!-- Перший розробник -->
+                    <div class="col-md-3 ms-2">
+                        <div class="card">
+                            <img src="designer1.png" class="card-img-top" alt="Senior Developer">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="designer1.html" class="text-decoration-none text-dark specialist-name">Олександра Мельник </a>
+                                </h5>
+                                <p class="card-text">UI/UX дизайнер з 4-річним досвідом</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-code"></i> UX-дослідження</li>
+                                    <li><i class="fas fa-database"></i> Figma, Adobe XD </li>
+                                    <li><i class="fas fa-server"></i> Webflow</li>
+                                </ul>
+                                <button class="btn btn-primary w-100" onclick="redirectToContact('developer')">Переглянути</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Другий розробник -->
+                    <div class="col-md-3 ms-2">
+                        <div class="card">
+                            <img src="developer2.png" class="card-img-top" alt="Junior Developer">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="developer2.html" class="text-decoration-none text-dark specialist-name">Олександр Петренко</a>
+                                </h5>
+                                <p class="card-text">Junior Python Developer, початківець</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-code"></i> Python Basics</li>
+                                    <li><i class="fas fa-laptop-code"></i> HTML/CSS</li>
+                                    <li><i class="fas fa-database"></i> SQLite</li>
+                                </ul>
+                                <button class="btn btn-primary w-100" onclick="redirectToContact('developer01')">Переглянути</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Контакти</h5>
+                    <p><i class="fas fa-phone"></i> +380 (XX) XXX-XX-XX</p>
+                    <p><i class="fas fa-envelope"></i> info@example.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Соціальні мережі</h5>
+                    <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-telegram"></i></a>
+                </div>
+                <div class="col-md-4">
+                    <h5>Адреса</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Примірна, 123</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('sidebar-container', 'components/sidebar.html');
+        });
+
+        function redirectToContact(developer) {
+            window.location.href = developer + ".html#contact";
+            
+            setTimeout(function() {
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                    contactSection.classList.add('highlight');
+                    setTimeout(() => contactSection.classList.remove('highlight'), 2000);
+                }
+            }, 500);
+        }
+    </script>
+
+    <style>
+        .highlight {
+            animation: glow 2s ease-in-out;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 0 rgba(0,123,255,0); }
+            50% { box-shadow: 0 0 20px rgba(0,123,255,0.5); }
+            100% { box-shadow: 0 0 0 rgba(0,123,255,0); }
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+
+        .card {
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .specialist-name:hover {
+            color: #0d6efd !important;
+            text-decoration: underline !important;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
+</body>
+</html>

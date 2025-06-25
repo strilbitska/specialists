@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Підбір спеціалістів</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Бокове меню -->
+        <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
+            <!-- Контент бокового меню  -->
+        </div>
+
+        <!-- Основний контент -->
+        <div class="content p-3 flex-grow-1">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-md-3 ms-2">
+                        <div class="card">
+                            <img src="photographer1.png" class="card-img-top" alt="Фотограф">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="photographer1.html" class="text-decoration-none text-blue specialist-name">Олександра Савчук</a>
+                                </h5>
+                                <p class="card-text">Професійний фотограф з 5-річним досвідом</p>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-camera"></i> Весільна фотографія</li>
+                                    <li><i class="fas fa-portrait"></i> Портретна зйомка</li>
+                                    <li><i class="fas fa-building"></i> Комерційна фотографія</li>
+                                </ul>
+                                <button class="btn btn-primary w-100" a href="photographer1.html" onclick="redirectToBooking()">Переглянути</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Контакти</h5>
+                    <p><i class="fas fa-phone"></i> +380 (XX) XXX-XX-XX</p>
+                    <p><i class="fas fa-envelope"></i> info@example.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Соціальні мережі</h5>
+                    <a href="#" class="text-white me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-telegram"></i></a>
+                </div>
+                <div class="col-md-4">
+                    <h5>Адреса</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Примірна, 123</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('sidebar-container', 'components/sidebar.html');
+        });
+
+        function redirectToBooking() {
+            window.location.href = "photographer.html#booking";
+            
+            setTimeout(function() {
+                const bookingForm = document.getElementById('booking');
+                if (bookingForm) {
+                    bookingForm.scrollIntoView({ behavior: 'smooth' });
+                    bookingForm.classList.add('highlight');
+                    setTimeout(() => bookingForm.classList.remove('highlight'), 2000);
+                }
+            }, 500);
+        }
+    </script>
+
+    <style>
+        .highlight {
+            animation: glow 2s ease-in-out;
+        }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 0 rgba(0,123,255,0); }
+            50% { box-shadow: 0 0 20px rgba(0,123,255,0.5); }
+            100% { box-shadow: 0 0 0 rgba(0,123,255,0); }
+        }
+
+        .sidebar {
+            min-height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+
+        .card {
+            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .specialist-name:hover {
+            color: #0d6efd !important;
+            text-decoration: underline !important;
+        }
+
+        footer {
+            margin-top: auto;
+        }
+    </style>
+</body>
+</html>

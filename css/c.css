@@ -1,0 +1,153 @@
+/* Основні стилі */
+body {
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Бокове меню */
+.sidebar {
+    min-width: 250px;
+    min-height: 100vh;
+    padding-top: 1rem !important; /* Уменьшаем отступ сверху */
+}
+
+.sidebar h4 {
+    margin-bottom: 1rem !important; /* Уменьшаем отступ под заголовком */
+}
+
+/* Основной контент */
+.content {
+    padding-top: 1rem !important; /* Уменьшаем верхний отступ */
+}
+
+/* Банер */
+.banner {
+    background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 2rem !important;
+    margin-bottom: 1.5rem !important;
+    color: white; /* Добавляем явный цвет текста */
+}
+
+.banner h1,
+.banner p {
+    color: rgb(241, 246, 242); /* Явно указываем цвет для заголовка и параграфа */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* Добавляем тень для лучшей читаемости */
+}
+
+.banner .lead {
+    opacity: 0.9; /* Делаем подзаголовок немного прозрачнее */
+}
+
+
+
+/* Форма пошуку */
+.search-section {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/* Картки з перевагами */
+.feature-card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    color: #0d6efd;
+}
+
+/* Статистика */
+.stats-section {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin: 2rem 0;
+}
+
+.stat-item {
+    padding: 1rem;
+}
+
+.stat-item h2 {
+    color: #0d6efd;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    color: #6c757d;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    .sidebar {
+        min-width: 200px;
+    }
+    
+    .banner {
+        padding: 2rem !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
+/* Стилі для сторінки HR-менеджера */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.badge {
+    transition: transform 0.3s ease;
+}
+
+.badge:hover {
+    transform: scale(1.1);
+}
+
+.nav-link {
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #0d6efd !important;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+    header {
+        padding: 2rem 0 !important;
+    }
+    
+    .display-4 {
+        font-size: 2rem;
+    }
+}
+
+.preview-icon {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.carousel-inner img {
+    border-radius: 20px;
+    object-fit: cover;
+    height: 250px;
+}

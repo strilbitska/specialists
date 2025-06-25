@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Відгуки</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/c.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .review-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+        }
+        .filters select {
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Бокове меню -->
+        <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
+            <!-- Контент бокового меню буде завантажено тут -->
+        </div>
+
+        <!-- Основний контент -->
+        <div class="content p-3 flex-grow-1">
+            <div class="container py-4">
+                <h1 class="mb-4 text-center">Відгуки про спеціалістів</h1>
+                <div class="filters mb-4 d-flex gap-3 justify-content-center">
+                    <select id="category-filter" class="form-select">
+                        <option value="">Всі категорії</option>
+                        <option value="photographer2.html">📸 Фотографи</option>
+                        <option value="designer.html">🎨 UI/UX дизайнери</option>
+                        <option value="developer2.html">💻 Python розробники</option>
+                        <option value="economist.html">📊 Економісти</option>
+                        <option value="hr.html">🧑‍💼 HR-менеджери</option>
+                        <option value="business-analyst.html">👨‍💼 Бізнес-аналітики</option>
+                        <option value="videographer.html">🎥 Відеографи</option>
+                        <option value="smm.html">🎯 SMM-менеджери</option>
+                        <option value="data-analyst.html">📊 Data Analysts</option>
+                        <option value="devOps.html">🖥 DevOps інженери</option>
+                        <option value="3d-designer.html">🎮 3D дизайнери</option>
+                    </select>
+                    <select id="specialist-filter" class="form-select">
+                        <option value="">Всі спеціалісти</option>
+                        <!-- Динамічно наповнюється через JS -->
+                    </select>
+                </div>
+                <div class="reviews-container row g-4">
+                    <!-- Відгуки будуть додані через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>© 2025 Підбір спеціалістів | Всі права захищені</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/components.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadComponent('sidebar-container', 'components/sidebar.html');
+        });
+    </script>
+</body>
+</html>
