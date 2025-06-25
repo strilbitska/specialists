@@ -2,642 +2,255 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Олександра Савчук — Фотограф</title>
+    <title>Підбір спеціалістів</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/c.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <style>
-        .carousel-inner img {
-            border-radius: 20px;
-            object-fit: cover;
-            height: 250px;
-        }
-        .preview-icon {
-            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-        }
-        .portfolio-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .btn-group .btn {
-            margin-right: 5px;
-            margin-bottom: 5px;
-        }
-        #categoryFilters {
-            flex-wrap: wrap;
-        }
-        .debug-info {
-            position: fixed;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0,0,0,0.8);
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            z-index: 9999;
-        }
-        .status-indicator {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            z-index: 9999;
-            font-weight: bold;
-        }
-        .status-ready { background: #d4edda; color: #155724; }
-        .status-error { background: #f8d7da; color: #721c24; }
-    </style>
 </head>
 <body>
-<!-- Навігація -->
-<nav class="navbar navbar-dark bg-dark">
-    <div class="container">
-        <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+<div class="d-flex">
+    <!-- Бокове меню -->
+    <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
+
     </div>
-</nav>
 
-<!-- Індикатор статусу EmailJS -->
-<div id="emailStatus" class="status-indicator" style="display: none;"></div>
-
-<!-- Профіль -->
-<header class="bg-light text-center py-5">
-    <div class="container">
-        <img src="photographer1.png" alt="Фотограф" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
-        <h1 class="display-4">Олександра Савчук</h1>
-        <p class="lead text-muted">Фотограф | 5+ років досвіду</p>
-        <div class="d-flex justify-content-center gap-3">
-            <a href="mailto:savchuk.photo@example.com" class="btn btn-primary">
-                <i class="fas fa-envelope"></i> Написати
-            </a>
-            <a href="#calendar" class="btn btn-outline-primary">
-                <i class="fas fa-calendar"></i> Забронювати фотосесію
-            </a>
+    <!-- Основний контент -->
+    <div class="content p-3 flex-grow-1">
+        <!-- Головний банер -->
+        <div class="banner">
+            <h1 class="display-4">Знайдіть ідеального digital-спеціаліста</h1>
+            <h4 class="display-7">Швидкий та ефективний підбір професіоналів для вашого проекту</h4>
+            <button class="btn btn-light btn-lg" onclick="scrollToSearch()">Почати пошук</button>
         </div>
-    </div>
-</header>
-
-<main class="container py-5">
-    <div class="row">
-        <!-- Основна інформація -->
-        <div class="col-lg-8">
-            <!-- Про мене -->
-            <section class="mb-5">
-                <h2><i class="fas fa-user"></i> Про мене</h2>
-                <p class="lead">Професійний фотограф з досвідом у різних жанрах фотографії.</p>
-                <p>Спеціалізуюсь на портретній, весільній та комерційній фотографії. Працюю як у студії, так і на локації.</p>
-            </section>
-
-            <!-- Портфоліо -->
-            <section class="mb-5">
-                <h2><i class="fas fa-camera"></i> Портфоліо</h2>
-                <div class="row">
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=400&h=300&fit=crop" class="card-img-top" alt="Весілля">
-                            <div class="card-body">
-                                <h6>Весільна фотосесія</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop" class="card-img-top" alt="Портрет">
-                            <div class="card-body">
-                                <h6>Портретна зйомка</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <img src="https://images.unsplash.com/photo-1511895426328-dc8714191300?w=400&h=300&fit=crop" class="card-img-top" alt="Сім'я">
-                            <div class="card-body">
-                                <h6>Сімейна фотосесія</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <!-- Сайдбар -->
-        <div class="col-lg-4">
-            <!-- Послуги та ціни -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Весільна фотосесія
-                            <span class="badge bg-primary rounded-pill">від 20 000грн.</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Портретна фотосесія
-                            <span class="badge bg-primary rounded-pill">6 500грн./год</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Комерційна зйомка
-                            <span class="badge bg-primary rounded-pill">від 12 500грн.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Календар бронювання -->
-            <div class="card mb-4" id="calendar">
-                <div class="card-body">
-                    <h3><i class="fas fa-calendar-alt"></i> Бронювання</h3>
-
-                    <!-- Форма вибору дати/часу -->
-                    <div class="mb-3">
-                        <label for="bookingDate" class="form-label">Дата консультації</label>
-                        <input type="date" class="form-control" id="bookingDate">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="bookingTime" class="form-label">Час</label>
-                        <select class="form-select" id="bookingTime">
-                            <option value="">Оберіть час</option>
-                            <option value="09:00">09:00</option>
-                            <option value="10:00">10:00</option>
-                            <option value="11:00">11:00</option>
-                            <option value="12:00">12:00</option>
-                            <option value="14:00">14:00</option>
-                            <option value="15:00">15:00</option>
-                            <option value="16:00">16:00</option>
-                            <option value="17:00">17:00</option>
+        <!-- Змінюю форму пошуку -->
+        <div class="search-section p-4 rounded mb-5" id="searchSection">
+            <h3 class="mb-4">Швидкий пошук спеціаліста</h3>
+            <form id="searchForm" onsubmit="return handleSearch(event)">
+                <div class="row g-3">
+                    <div class="col-md-5">
+                        <select class="form-select" id="specialistSelect">
+                            <option value="" selected>Виберіть категорію</option>
+                            <option value="photographer.html">📸 Фото/відео</option>
+                            <option value="designer.html">🎨 UI/UX дизайнер</option>
+                            <option value="developer.html">💻 Python розробники</option>
+                            <option value="economist.html">📊 Економіст</option>
+                            <option value="hr.html">🧑‍💼 HR-менеджер</option>
+                            <option value="business-analyst.html">👨‍💼 Бізнес-аналітик</option>
+                            <option value="videographer.html">🎥 Відеограф</option>
+                            <option value="smm.html">🎯 SMM-менеджер</option>
+                            <option value="data-analyst.html">📊 Data Analyst</option>
+                            <option value="devOps.html">🖥 DevOps інженер</option>
+                            <option value="3d-designer.html">🎮 3D дизайнер</option>
                         </select>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="consultationType" class="form-label">Тип консультації</label>
-                        <select class="form-select" id="consultationType">
-                            <option value="">Оберіть тип</option>
-                            <option value="Весільна фотосесія">Весільна фотосесія</option>
-                            <option value="Портретна зйомка">Портретна зйомка</option>
-                            <option value="Комерційна зйомка">Комерційна зйомка</option>
-                            <option value="Сімейна фотосесія">Сімейна фотосесія</option>
+                    <div class="col-md-4">
+                        <select class="form-select" id="categorySelect">
+                            <option value="" selected>Виберіть категорію</option>
+                            <option value="photographer.html">📸 Фотографи</option>
+                            <option value="designer.html">🎨 UI/UX дизайнери</option>
+                            <option value="developer.html">💻 Python розробники</option>
+                            <option value="economist.html">📊 Економісти</option>
+                            <option value="hr.html">🧑‍💼 HR-менеджери</option>
+                            <option value="business-analyst.html">👨‍💼 Бізнес-аналітики</option>
+                            <option value="videographer.html">🎥 Відеографи</option>
+                            <option value="smm.html">🎯 SMM-менеджери</option>
+                            <option value="data-analyst.html">📊 Data Analysts</option>
+                            <option value="devOps.html">🖥 DevOps інженери</option>
+                            <option value="3d-designer.html">🎮 3D дизайнери</option>
                         </select>
                     </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary w-100">Знайти</button>
+                    </div>
+                </div>
+            </form>
+        </div>
 
-                    <!-- Кнопка відкриття модального вікна -->
-                    <button type="button" class="btn btn-primary w-100" id="openBookingBtn">
-                        <i class="fas fa-calendar-check"></i> Забронювати консультацію
-                    </button>
+        <!-- Заменяем JavaScript код -->
+        <script>
+            // Функція для прокрутки до форми пошуку
+            function scrollToSearch() {
+                document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Обробка пошуку
+            document.addEventListener('DOMContentLoaded', function() {
+                const searchForm = document.getElementById('searchForm');
+                const specialistSelect = document.getElementById('specialistSelect');
+                const categorySelect = document.getElementById('categorySelect');
+
+                // Обробник форми пошуку
+                function handleSearch(event) {
+                    event.preventDefault();
+
+                    const selectedSpecialist = specialistSelect.value;
+                    const selectedCategory = categorySelect.value;
+
+                    // Перевірка чи вибрано хоча б один параметр
+                    if (!selectedSpecialist && !selectedCategory) {
+                        alert('Будь ласка, виберіть спеціаліста або категорію.');
+                        return false;
+                    }
+
+                    // Пріоритет надається вибору спеціаліста
+                    if (selectedSpecialist) {
+                        window.location.href = selectedSpecialist;
+                        return false;
+                    }
+
+                    // Якщо спеціаліст не вибраний, використовуємо категорію
+                    if (selectedCategory) {
+                        window.location.href = selectedCategory;
+                        return false;
+                    }
+                }
+
+                searchForm.addEventListener('submit', handleSearch);
+            });
+        </script>
+
+        <!-- Переваги -->
+        <div class="row mb-5">
+            <div class="col-md-4">
+                <div class="feature-card card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-search fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Швидкий пошук</h5>
+                        <p class="card-text">Знаходьте потрібних спеціалістів за лічені хвилини</p>
+                    </div>
                 </div>
             </div>
-
-            <!-- Контакти -->
-            <div class="card">
-                <div class="card-body">
-                    <h3><i class="fas fa-phone"></i> Контакти</h3>
-                    <p><i class="fas fa-envelope"></i> savchuk.photo@example.com</p>
-                    <p><i class="fas fa-phone"></i> +380 50 123 45 67</p>
-                    <p><i class="fas fa-map-marker-alt"></i> м. Київ</p>
-                    <div class="d-flex gap-2">
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="btn btn-outline-primary btn-sm">
-                            <i class="fab fa-facebook"></i>
-                        </a>
+            <div class="col-md-4">
+                <div class="feature-card card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-check-circle fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Перевірені фахівці</h5>
+                        <p class="card-text">Усі спеціалісти проходять ретельну перевірку</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-star fs-1 text-primary mb-3"></i>
+                        <h5 class="card-title">Рейтингова система</h5>
+                        <p class="card-text">Відгуки та оцінки від реальних клієнтів</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</main>
-
-<!-- Модальне вікно для бронювання -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="bookingModalLabel">
-                    <i class="fas fa-calendar-check"></i> Підтвердження бронювання
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <!-- Інформація про бронювання -->
-                <div class="alert alert-info">
-                    <h6><i class="fas fa-info-circle"></i> Деталі бронювання</h6>
-                    <p class="mb-1"><strong>Дата:</strong> <span id="selectedDate">-</span></p>
-                    <p class="mb-1"><strong>Час:</strong> <span id="selectedTime">-</span></p>
-                    <p class="mb-0"><strong>Тип:</strong> <span id="selectedType">-</span></p>
+        <!-- Статистика -->
+        <div class="stats-section text-center py-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h2 class="display-4 fw-bold">10+</h2>
+                        <p>Спеціалістів</p>
+                    </div>
                 </div>
-
-                <!-- Форма даних користувача -->
-                <form id="userDataForm">
-                    <div class="mb-3">
-                        <label for="userName" class="form-label">Ваше ім'я *</label>
-                        <input type="text" class="form-control" id="userName" required
-                               placeholder="Введіть ваше повне ім'я">
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h2 class="display-4 fw-bold">100+</h2>
+                        <p>Успішних проектів</p>
                     </div>
-                    <div class="mb-3">
-                        <label for="userEmail" class="form-label">Email *</label>
-                        <input type="email" class="form-control" id="userEmail" required
-                               placeholder="your@email.com">
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h2 class="display-4 fw-bold">98%</h2>
+                        <p>Задоволених клієнтів</p>
                     </div>
-                    <div class="mb-3">
-                        <label for="userPhone" class="form-label">Телефон *</label>
-                        <input type="tel" class="form-control" id="userPhone" required
-                               placeholder="+380 XX XXX XX XX">
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-item">
+                        <h2 class="display-4 fw-bold">24/7</h2>
+                        <p>Підтримка</p>
                     </div>
-                    <div class="mb-3">
-                        <label for="userMessage" class="form-label">Додаткові побажання</label>
-                        <textarea class="form-control" id="userMessage" rows="3"
-                                  placeholder="Розкажіть про ваші очікування від фотосесії..."></textarea>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
-                <button type="button" class="btn btn-primary" id="confirmBookingBtn">
-                    <i class="fas fa-check"></i> Підтвердити бронювання
-                </button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Bootstrap JS -->
+<!-- Підвал -->
+<footer class="bg-dark text-white text-center py-3">
+    <p>© 2025 Підбір спеціалістів | Всі права захищені</p>
+</footer>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // 🔧 КОНФІГУРАЦІЯ EmailJS
-    const EMAIL_CONFIG = {
-        // ⚠️ ЗАМІНІТЬ ЦІ ДАНІ на свої з emailjs.com
-        PUBLIC_KEY: "YOUR_PUBLIC_KEY",     // Отримайте на emailjs.com
-        SERVICE_ID: "YOUR_SERVICE_ID",     // Gmail service ID
-        TEMPLATE_ID: "YOUR_TEMPLATE_ID",   // Email template ID
+    // Функція для прокрутки до форми пошуку
+    function scrollToSearch() {
+        document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' });
+    }
 
-        // Тестовий режим (включити якщо EmailJS ще не налаштований)
-        TEST_MODE: true
-    };
+    // Обробка пошуку
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        const categorySelect = document.getElementById('categorySelect');
 
-    // Глобальні змінні
-    let bookingModal = null;
-    let isEmailJSReady = false;
+        // Обробник зміни категорії
+        categorySelect.addEventListener('change', function() {
+            if (this.value) {
+                window.location.href = this.value;
+            }
+        });
 
-    // 📧 Ініціалізація EmailJS
-    function initializeEmailJS() {
-        try {
-            if (EMAIL_CONFIG.TEST_MODE) {
-                console.log('📧 EmailJS: Тестовий режим увімкнений');
-                showStatus('📧 Тестовий режим Email', 'status-ready');
-                isEmailJSReady = true;
+        // Обробник форми пошуку
+        function handleSearch(event) {
+            event.preventDefault();
+
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedCategory = categorySelect.value;
+
+            // Якщо вибрана категорія
+            if (selectedCategory) {
+                window.location.href = selectedCategory;
                 return;
             }
 
-            // Реальна ініціалізація EmailJS
-            emailjs.init(EMAIL_CONFIG.PUBLIC_KEY);
-            isEmailJSReady = true;
-            showStatus('📧 EmailJS готовий', 'status-ready');
-            console.log('✅ EmailJS ініціалізовано');
+            // Пошук за текстом
+            if (searchTerm) {
+                const specialists = {
+                    'фотограф': 'photographer.html',
+                    'дизайнер': 'designer.html',
+                    'розробник': 'developer.html',
+                    'економіст': 'economist.html',
+                    'hr': 'hr.html',
+                    'бізнес-аналітик': 'business-analyst.html',
+                    'відеограф': 'videographer.html',
+                    'smm-менеджер': 'smm.html',
+                    'smm': 'smm.html',
+                    'data analyst': 'data-analyst.html',
+                    'devops інженер': 'devOps.html',
+                    '3d дизайнер': '3d-designer.html'
 
-        } catch (error) {
-            console.error('❌ Помилка ініціалізації EmailJS:', error);
-            showStatus('❌ Помилка Email сервісу', 'status-error');
-            isEmailJSReady = false;
-        }
-    }
+                };
 
-    // 📧 Відправка email через EmailJS
-    async function sendBookingConfirmation(bookingData) {
-        if (EMAIL_CONFIG.TEST_MODE) {
-            // Тестовий режим - імітуємо відправку
-            console.log('📧 ТЕСТОВИЙ РЕЖИМ - Імітація відправки email:', bookingData);
-
-            // Показуємо "email" в консолі
-            const emailContent = `
-            ═══════════════════════════════════════
-            📧 EMAIL ЩО МАВ БИ ВІДПРАВИТИСЯ:
-            ═══════════════════════════════════════
-
-            Кому: ${bookingData.email}
-            Тема: 🎉 Підтвердження бронювання фотосесії
-
-            Вітаємо, ${bookingData.name}!
-
-            📋 Деталі бронювання:
-            • Тип: ${bookingData.type}
-            • Дата: ${new Date(bookingData.date).toLocaleDateString('uk-UA')}
-            • Час: ${bookingData.time}
-            • Телефон: ${bookingData.phone}
-            • Повідомлення: ${bookingData.message || 'Немає'}
-
-            Дякуємо за бронювання! Ми зв'яжемося з вами найближчим часом.
-
-            З повагою,
-            Олександра Савчук - Фотограф
-            ═══════════════════════════════════════
-            `;
-
-            console.log(emailContent);
-
-            // Імітуємо затримку мережі
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            return true;
-        }
-
-        // Реальна відправка через EmailJS
-        if (!isEmailJSReady) {
-            throw new Error('EmailJS не готовий');
-        }
-
-        const templateParams = {
-            to_email: bookingData.email,
-            to_name: bookingData.name,
-            client_name: bookingData.name,
-            booking_id: generateBookingId(),
-            service_type: bookingData.type,
-            booking_date: new Date(bookingData.date).toLocaleDateString('uk-UA'),
-            booking_time: bookingData.time,
-            client_phone: bookingData.phone,
-            client_email: bookingData.email,
-            message: bookingData.message || 'Немає додаткових побажань',
-            specialist_name: 'Олександра Савчук',
-            specialist_email: 'savchuk.photo@example.com'
-        };
-
-        try {
-            const response = await emailjs.send(
-                EMAIL_CONFIG.SERVICE_ID,
-                EMAIL_CONFIG.TEMPLATE_ID,
-                templateParams
-            );
-
-            console.log('✅ Email відправлено успішно!', response);
-            return true;
-
-        } catch (error) {
-            console.error('❌ Помилка відправки email:', error);
-            throw error;
-        }
-    }
-
-    // 🎲 Генерація ID бронювання
-    function generateBookingId() {
-        return 'BK' + Date.now().toString().slice(-6) + Math.floor(Math.random() * 100).toString().padStart(2, '0');
-    }
-
-    // 📱 Показ статусу
-    function showStatus(message, className) {
-        const statusDiv = document.getElementById('emailStatus');
-        statusDiv.textContent = message;
-        statusDiv.className = `status-indicator ${className}`;
-        statusDiv.style.display = 'block';
-
-        // Приховуємо через 3 секунди
-        setTimeout(() => {
-            statusDiv.style.display = 'none';
-        }, 3000);
-    }
-
-    // ⚙️ Ініціалізація при завантаженні сторінки
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🚀 Ініціалізація сторінки...');
-
-        try {
-            // Ініціалізуємо EmailJS
-            initializeEmailJS();
-
-            // Ініціалізуємо модальне вікно
-            const modalElement = document.getElementById('bookingModal');
-            if (modalElement) {
-                bookingModal = new bootstrap.Modal(modalElement);
-                console.log('✅ Модальне вікно готове');
-            }
-
-            // Встановлюємо мінімальну дату (завтра)
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            const minDate = tomorrow.toISOString().split('T')[0];
-
-            const dateInput = document.getElementById('bookingDate');
-            if (dateInput) {
-                dateInput.setAttribute('min', minDate);
-            }
-
-            // Додаємо обробники подій
-            setupEventListeners();
-
-        } catch (error) {
-            console.error('❌ Помилка ініціалізації:', error);
-            showStatus('❌ Помилка ініціалізації', 'status-error');
-        }
-    });
-
-    // 🔗 Налаштування обробників подій
-    function setupEventListeners() {
-        // Кнопка відкриття модального вікна
-        const openBtn = document.getElementById('openBookingBtn');
-        if (openBtn) {
-            openBtn.addEventListener('click', openBookingModal);
-        }
-
-        // Кнопка підтвердження бронювання
-        const confirmBtn = document.getElementById('confirmBookingBtn');
-        if (confirmBtn) {
-            confirmBtn.addEventListener('click', confirmBooking);
-        }
-    }
-
-    // 📋 Відкриття модального вікна бронювання
-    function openBookingModal() {
-        const date = document.getElementById('bookingDate').value;
-        const time = document.getElementById('bookingTime').value;
-        const type = document.getElementById('consultationType').value;
-
-        if (!date || !time || !type) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Заповніть всі поля',
-                text: 'Будь ласка, оберіть дату, час та тип консультації',
-                confirmButtonText: 'Зрозуміло'
-            });
-            return;
-        }
-
-        // Заповнюємо інформацію в модальному вікні
-        document.getElementById('selectedDate').textContent = new Date(date).toLocaleDateString('uk-UA');
-        document.getElementById('selectedTime').textContent = time;
-        document.getElementById('selectedType').textContent = type;
-
-        // Показуємо модальне вікно
-        if (bookingModal) {
-            bookingModal.show();
-        }
-    }
-
-    // ✅ Підтвердження бронювання
-    async function confirmBooking() {
-        const name = document.getElementById('userName').value.trim();
-        const email = document.getElementById('userEmail').value.trim();
-        const phone = document.getElementById('userPhone').value.trim();
-        const message = document.getElementById('userMessage').value.trim();
-
-        // Валідація
-        if (!name || !email || !phone) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Заповніть всі поля',
-                text: 'Будь ласка, заповніть всі обов\'язкові поля',
-                confirmButtonText: 'Зрозуміло'
-            });
-            return;
-        }
-
-        // Валідація email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            Swal.fire({
-                icon: 'warning',
-                title: 'Некоректний email',
-                text: 'Будь ласка, введіть правильний email адрес',
-                confirmButtonText: 'Зрозуміло'
-            });
-            return;
-        }
-
-        const bookingData = {
-            date: document.getElementById('bookingDate').value,
-            time: document.getElementById('bookingTime').value,
-            type: document.getElementById('consultationType').value,
-            name: name,
-            email: email,
-            phone: phone,
-            message: message
-        };
-
-        try {
-            // Показуємо індикатор завантаження
-            Swal.fire({
-                title: 'Відправляємо підтвердження...',
-                html: 'Будь ласка, зачекайте',
-                allowOutsideClick: false,
-                didOpen: () => {
-                    Swal.showLoading();
+                for (let [key, value] of Object.entries(specialists)) {
+                    if (key.includes(searchTerm)) {
+                        window.location.href = value;
+                        return;
+                    }
                 }
-            });
 
-            // Відправляємо email
-            const emailSent = await sendBookingConfirmation(bookingData);
-
-            if (emailSent) {
-                // Успішне бронювання
-                bookingModal.hide();
-
-                const bookingId = generateBookingId();
-
-                Swal.fire({
-                    icon: 'success',
-                    title: '🎉 Консультацію заброньовано!',
-                    html: `
-                        <div style="text-align: left; padding: 20px;">
-                            <p><strong>Дякуємо, ${name}!</strong></p>
-                            <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
-                                <h4>📋 Деталі бронювання:</h4>
-                                <p><strong>Номер:</strong> ${bookingId}</p>
-                                <p><strong>Тип:</strong> ${bookingData.type}</p>
-                                <p><strong>Дата:</strong> ${new Date(bookingData.date).toLocaleDateString('uk-UA')}</p>
-                                <p><strong>Час:</strong> ${bookingData.time}</p>
-                            </div>
-                            <div style="background: #d4edda; padding: 15px; border-radius: 10px; color: #155724;">
-                                <p><strong>📧 Підтвердження надіслано на ваш email!</strong></p>
-                                <p>Перевірте вашу поштову скриньку: <strong>${email}</strong></p>
-                                ${EMAIL_CONFIG.TEST_MODE ? '<p><em>💡 Також перевірте консоль браузера (F12)</em></p>' : ''}
-                            </div>
-                        </div>
-                    `,
-                    confirmButtonText: 'Чудово!',
-                    width: 600
-                });
-
-                // Очищуємо форми
-                document.getElementById('userDataForm').reset();
-                document.getElementById('bookingDate').value = '';
-                document.getElementById('bookingTime').value = '';
-                document.getElementById('consultationType').value = '';
-
-            } else {
-                throw new Error('Помилка відправки email');
+                // Якщо нічого не знайдено
+                alert('Спеціаліста не знайдено. Спробуйте інший запит або виберіть із списку.');
             }
-
-        } catch (error) {
-            console.error('❌ Помилка бронювання:', error);
-
-            Swal.fire({
-                icon: 'error',
-                title: 'Помилка відправки',
-                text: 'Не вдалося відправити підтвердження. Спробуйте ще раз.',
-                confirmButtonText: 'Спробувати ще раз'
-            });
         }
-    }
 
-    console.log('🎯 Сторінка готова!');
-
-    // 🧪 ТЕСТОВІ ФУНКЦІЇ - робимо їх глобальними
-    window.testEmailSend = function() {
-        console.log('🧪 Запуск тесту email...');
-
-        const testData = {
-            name: 'Тестовий Користувач',
-            email: 'test@example.com',
-            phone: '+380501234567',
-            type: 'Портретна зйомка',
-            date: '2025-01-15',
-            time: '14:00',
-            message: 'Тестове повідомлення для перевірки системи'
-        };
-
-        return sendBookingConfirmation(testData).then(result => {
-            console.log('🧪 Результат тесту:', result ? '✅ Успішно' : '❌ Помилка');
-            return result;
-        }).catch(error => {
-            console.error('🧪 Помилка тесту:', error);
-            return false;
-        });
-    };
-
-    window.testModal = function() {
-        console.log('🧪 Тест модального вікна');
-        if (bookingModal) {
-            bookingModal.show();
-            console.log('✅ Модальне вікно відкрито');
-        } else {
-            console.log('❌ Модальне вікно не готове');
-        }
-    };
-
-    window.checkEmailStatus = function() {
-        console.log('📧 Статус Email системи:');
-        console.log('- EmailJS готовий:', isEmailJSReady);
-        console.log('- Тестовий режим:', EMAIL_CONFIG.TEST_MODE);
-        console.log('- Конфігурація:', EMAIL_CONFIG);
-    };
-
-    // Виводимо доступні команди
-    console.log(`
-🎯 ДОСТУПНІ ТЕСТОВІ КОМАНДИ:
-═══════════════════════════════
-• testEmailSend()     - тест відправки email
-• testModal()         - тест модального вікна
-• checkEmailStatus()  - перевірка статусу системи
-
-Введіть будь-яку команду в консолі!
-    `);
-
+        searchForm.addEventListener('submit', handleSearch);
+    });
 </script>
-
+</div>
+<script src="js/components.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOM loaded, trying to load sidebar...');
+        loadComponent('sidebar-container', 'components/sidebar.html');
+    });
+</script>
 </body>
 </html>
