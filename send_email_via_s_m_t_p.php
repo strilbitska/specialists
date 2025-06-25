@@ -100,7 +100,6 @@ function generateBookingEmailHTML($name, $booking_id, $data) {
                 <div class='highlight'>
                     <h4> Що далі?</h4>
                     <p>• Наш спеціаліст зв'яжеться з вами найближчим часом</p>
-                    <p>• Ви отримаете нагадування за день до консультації</p>
                 </div>
 
                 <div style='text-align: center;'>
