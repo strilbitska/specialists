@@ -12,61 +12,172 @@
             background: #fff;
             border-radius: 16px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 20px;
+            margin-bottom: 20px;
         }
         .filters select {
             min-width: 200px;
         }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .reviewer-name {
+            font-weight: bold;
+        }
+        .review-date {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+        .review-rating {
+            color: #ffc107;
+            margin-bottom: 10px;
+        }
+        .review-text {
+            color: #212529;
+        }
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
     </style>
 </head>
 <body>
-    <div class="d-flex">
-        <!-- Бокове меню -->
-        <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
-            <!-- Контент бокового меню буде завантажено тут -->
-        </div>
+<div class="d-flex">
+    <!-- Бокове меню -->
+    <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
+        <!-- Контент бокового меню буде завантажено тут -->
+    </div>
 
-        <!-- Основний контент -->
-        <div class="content p-3 flex-grow-1">
-            <div class="container py-4">
-                <h1 class="mb-4 text-center">Відгуки про спеціалістів</h1>
-                <div class="filters mb-4 d-flex gap-3 justify-content-center">
-                    <select id="category-filter" class="form-select">
-                        <option value="">Всі категорії</option>
-                        <option value="photographer2.html">📸 Фотографи</option>
-                        <option value="designer.html">🎨 UI/UX дизайнери</option>
-                        <option value="developer2.html">💻 Python розробники</option>
-                        <option value="economist.html">📊 Економісти</option>
-                        <option value="hr.html">🧑‍💼 HR-менеджери</option>
-                        <option value="business-analyst.html">👨‍💼 Бізнес-аналітики</option>
-                        <option value="videographer.html">🎥 Відеографи</option>
-                        <option value="smm.html">🎯 SMM-менеджери</option>
-                        <option value="data-analyst.html">📊 Data Analysts</option>
-                        <option value="devOps.html">🖥 DevOps інженери</option>
-                        <option value="3d-designer.html">🎮 3D дизайнери</option>
-                    </select>
-                    <select id="specialist-filter" class="form-select">
-                        <option value="">Всі спеціалісти</option>
-                        <!-- Динамічно наповнюється через JS -->
-                    </select>
-                </div>
-                <div class="reviews-container row g-4">
-                    <!-- Відгуки будуть додані через JavaScript -->
+    <!-- Основний контент -->
+    <div class="content p-3 flex-grow-1">
+        <div class="container py-4">
+            <h1 class="mb-4 text-center">Відгуки про спеціалістів</h1>
+            <div class="filters mb-4 d-flex gap-3 justify-content-center">
+                <select id="category-filter" class="form-select">
+                    <option value="">Всі категорії</option>
+                    <option value="photographer2.html">📸 Фотографи</option>
+                    <option value="designer.html">🎨 UI/UX дизайнери</option>
+                    <option value="developer2.html">💻 Python розробники</option>
+                    <option value="economist.html">📊 Економісти</option>
+                    <option value="hr.html">🧑‍💼 HR-менеджери</option>
+                    <option value="business-analyst.html">👨‍💼 Бізнес-аналітики</option>
+                    <option value="videographer.html">🎥 Відеографи</option>
+                    <option value="smm.html">🎯 SMM-менеджери</option>
+                    <option value="data-analyst.html">📊 Data Analysts</option>
+                    <option value="devOps.html">🖥 DevOps інженери</option>
+                    <option value="3d-designer.html">🎮 3D дизайнери</option>
+                </select>
+                <select id="specialist-filter" class="form-select">
+                    <option value="">Всі спеціалісти</option>
+                </select>
+            </div>
+            <div id="reviewsList" class="reviews-container">
+                <div class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Завантаження відгуків...</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <footer class="bg-dark text-white text-center py-3 mt-5">
-        <p>© 2025 Підбір спеціалістів | Всі права захищені</p>
-    </footer>
+<footer class="bg-dark text-white text-center py-3 mt-5">
+    <p>© 2025 Підбір спеціалістів | Всі права захищені</p>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/reviews.js"></script>
-    <script src="js/components.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('sidebar-container', 'components/sidebar.html');
-        });
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadComponent('sidebar-container', 'components/sidebar.html');
+        loadReviews();
+    });
+
+    // Функція завантаження відгуків
+    async function loadReviews(specialistId = null) {
+        const container = document.getElementById('reviewsList');
+        try {
+            let url = 'specialist_reviews_api.php';
+            if (specialistId) {
+                url += `?specialist_id=${specialistId}`;
+            }
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.success) {
+                displayReviews(data.reviews);
+            } else {
+                throw new Error(data.error || 'Помилка завантаження відгуків');
+            }
+        } catch (error) {
+            console.error('Помилка:', error);
+            container.innerHTML = `
+                    <div class="alert alert-danger text-center" role="alert">
+                        <i class="fas fa-exclamation-circle"></i>
+                        ${error.message}
+                    </div>
+                `;
+        }
+    }
+
+    // Функція відображення відгуків
+    function displayReviews(reviews) {
+        const container = document.getElementById('reviewsList');
+
+        if (!reviews || reviews.length === 0) {
+            container.innerHTML = `
+                    <div class="alert alert-info text-center" role="alert">
+                        <i class="fas fa-info-circle"></i>
+                        Відгуків поки немає
+                    </div>
+                `;
+            return;
+        }
+
+        const html = reviews.map(review => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-name">
+                            <i class="fas fa-user-circle text-primary"></i>
+                            ${review.client_name}
+                        </div>
+                        <div class="review-date">
+                            ${new Date(review.date).toLocaleDateString('uk-UA')}
+                        </div>
+                    </div>
+                    <div class="review-rating">
+                        ${'⭐'.repeat(review.rating)}
+                        <span class="text-muted">(${review.rating}/5)</span>
+                    </div>
+                    <div class="review-text">
+                        ${review.review_text}
+                    </div>
+                </div>
+            `).join('');
+
+        container.innerHTML = html;
+    }
+
+    // Обробники подій для фільтрів
+    document.getElementById('category-filter').addEventListener('change', function(e) {
+        const categoryId = e.target.value;
+        // Тут можна додати логіку фільтрації за категорією
+        loadReviews();
+    });
+
+    document.getElementById('specialist-filter').addEventListener('change', function(e) {
+        const specialistId = e.target.value;
+        if (specialistId) {
+            loadReviews(specialistId);
+        } else {
+            loadReviews();
+        }
+    });
+</script>
 </body>
 </html>
