@@ -2,150 +2,136 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
-    <title>Підбір спеціалістів</title>
+    <title>Підбір аналітиків даних</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/c.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="d-flex">
-        <!-- Бокове меню -->
-        <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
-            <!-- Контент бокового меню буде завантажено тут -->
-        </div>
+<div class="d-flex">
+    <!-- Бокове меню -->
+    <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
+        <!-- Контент бокового меню буде завантажено тут -->
+    </div>
 
-        <!-- Основний контент -->
-        <div class="content p-3 flex-grow-1">
-            <div class="container-fluid py-4">
-                <div class="row">
-                    <!-- Перший розробник -->
-                    <div class="col-md-3 ms-2">
-                        <div class="card">
-                            <img src="developer.png" class="card-img-top" alt="Senior Developer">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a href="developer.html" class="text-decoration-none text-dark specialist-name">Михайло Коваленко</a>
-                                </h5>
-                                <p class="card-text">Senior Python Developer з 5-річним досвідом</p>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-code"></i> Python/Django</li>
-                                    <li><i class="fas fa-database"></i> SQL/PostgreSQL</li>
-                                    <li><i class="fas fa-server"></i> AWS/Docker</li>
-                                </ul>
-                                <button class="btn btn-primary w-100" onclick="redirectToContact('developer')">Переглянути</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Другий розробник -->
-                    <div class="col-md-3 ms-2">
-                        <div class="card">
-                            <img src="developer01.png" class="card-img-top" alt="Junior Developer">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <a href="developer01.html" class="text-decoration-none text-dark specialist-name">Олександр Петренко</a>
-                                </h5>
-                                <p class="card-text">Junior Python Developer, початківець</p>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-code"></i> Python Basics</li>
-                                    <li><i class="fas fa-laptop-code"></i> HTML/CSS</li>
-                                    <li><i class="fas fa-database"></i> SQLite</li>
-                                </ul>
-                                <button class="btn btn-primary w-100" onclick="redirectToContact('developer01')">Переглянути</button>
-                            </div>
+    <!-- Основний контент -->
+    <div class="content p-3 flex-grow-1">
+        <div class="container-fluid py-4">
+            <div class="row">
+                <!-- Data Analyst -->
+                <div class="col-md-3 ms-2">
+                    <div class="card">
+                        <img src="data-analyst.jpg" class="card-img-top" alt="Data Analyst">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="data-analyst1.html" class="text-decoration-none text-dark specialist-name">Андрій Ковальчук</a>
+                            </h5>
+                            <p class="card-text">Data Analyst без досвіду</p>
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-chart-bar"></i> Аналіз даних</li>
+                                <li><i class="fas fa-database"></i> SQL, Python</li>
+                                <li><i class="fas fa-chart-pie"></i> Power BI, Tableau</li>
+                            </ul>
+                            <button class="btn btn-primary w-100" onclick="redirectToContact('data-analyst1')">Переглянути</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Футер -->
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Контакти</h5>
-                    <p><i class="fas fa-phone"></i> +380 (XX) XXX-XX-XX</p>
-                    <p><i class="fas fa-envelope"></i> info@example.com</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Соціальні мережі</h5>
-                    <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
-                    <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-telegram"></i></a>
-                </div>
-                <div class="col-md-4">
-                    <h5>Адреса</h5>
-                    <p><i class="fas fa-map-marker-alt"></i> м. Київ, вул. Примірна, 123</p>
+<!-- Футер -->
+<footer class="bg-dark text-white py-4 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h5>Контакти</h5>
+                <p><i class="fas fa-phone"></i> +380 (XX) XXX-XX-XX</p>
+                <p><i class="fas fa-envelope"></i> info@example.com</p>
+            </div>
+            <div class="col-md-4">
+                <h5>Соціальні мережі</h5>
+                <a href="#" class="text-white me-3"><i class="fab fa-github"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-telegram"></i></a>
+            </div>
+            <div class="col-md-4">
+                <h5>Технології</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <span class="badge bg-primary">Python</span>
+                    <span class="badge bg-success">SQL</span>
+                    <span class="badge bg-info">Power BI</span>
+                    <span class="badge bg-warning">Tableau</span>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/components.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            loadComponent('sidebar-container', 'components/sidebar.html');
-        });
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        loadComponent('sidebar-container', 'components/sidebar.html');
+    });
 
-        function redirectToContact(developer) {
-            window.location.href = developer + ".html#contact";
-            
-            setTimeout(function() {
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                    contactSection.scrollIntoView({ behavior: 'smooth' });
-                    contactSection.classList.add('highlight');
-                    setTimeout(() => contactSection.classList.remove('highlight'), 2000);
-                }
-            }, 500);
-        }
-    </script>
+    function redirectToContact(specialist) {
+        window.location.href = specialist + ".html#contact";
 
-    <style>
-        .highlight {
-            animation: glow 2s ease-in-out;
-        }
+        setTimeout(function() {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                contactSection.classList.add('highlight');
+                setTimeout(() => contactSection.classList.remove('highlight'), 2000);
+            }
+        }, 500);
+    }
+</script>
 
-        @keyframes glow {
-            0% { box-shadow: 0 0 0 rgba(0,123,255,0); }
-            50% { box-shadow: 0 0 20px rgba(0,123,255,0.5); }
-            100% { box-shadow: 0 0 0 rgba(0,123,255,0); }
-        }
+<style>
+    .highlight {
+        animation: glow 2s ease-in-out;
+    }
 
-        .sidebar {
-            min-height: 100vh;
-            position: sticky;
-            top: 0;
-        }
+    @keyframes glow {
+        0% { box-shadow: 0 0 0 rgba(0,123,255,0); }
+        50% { box-shadow: 0 0 20px rgba(0,123,255,0.5); }
+        100% { box-shadow: 0 0 0 rgba(0,123,255,0); }
+    }
 
-        .card {
-            transition: transform 0.3s ease;
-            margin-bottom: 20px;
-            max-width: 300px;
-        }
+    .sidebar {
+        min-height: 100vh;
+        position: sticky;
+        top: 0;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+    .card {
+        transition: transform 0.3s ease;
+        margin-bottom: 20px;
+        max-width: 300px;
+    }
 
-        .card-img-top {
-            height: 200px;
-            object-fit: cover;
-        }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
 
-        .specialist-name:hover {
-            color: #0d6efd !important;
-            text-decoration: underline !important;
-        }
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+    }
 
-        footer {
-            margin-top: auto;
-        }
-    </style>
+    .specialist-name:hover {
+        color: #0d6efd !important;
+        text-decoration: underline !important;
+    }
+
+    footer {
+        margin-top: auto;
+    }
+</style>
 </body>
 </html>

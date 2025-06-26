@@ -30,7 +30,7 @@
                 <div class="row g-3">
                     <div class="col-md-5">
                         <select class="form-select" id="specialistSelect">
-                            <option value="">Виберіть спеціальність</option>
+                            <option value="">Виберіть категорію</option>
                             <option value="📸 Фото/відео">📸 Фото/відео</option>
                             <option value="💼 Бізнес">💼 Бізнес</option>
                             <option value="💻 Розробка ПЗ">💻 Розробка ПЗ</option>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="col-md-4">
                         <select class="form-select" id="categorySelect" disabled>
-                            <option value="">Оберіть категорію</option>
+                            <option value="">Оберіть спеціальність</option>
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -116,7 +116,7 @@
     // Відповідності категорій до HTML-сторінок
     const categoryPages = {
         "📸 Фотографи": "photographer.html",
-        "🎨 UI/UX дизайнери": "ui-ux-designer.html",
+        "🎨 UI/UX дизайнери": "designer.html",
         "🎮 3D дизайнери": "3d-designer.html",
         "🎥 Відеографи": "videographer.html",
         "📊 Економіст": "economist.html",
@@ -124,7 +124,7 @@
         "🎯 SMM-менеджер": "smm-manager.html",
         "📊 Data Analyst": "data-analyst.html",
         "💼 HR-менеджер": "hr-manager.html",
-        "💻 Python розробники": "python-developer.html",
+        "💻 Python розробники": "developer.html",
         "⚙️ DevOps інженери": "devops-engineer.html"
     };
 
@@ -159,7 +159,7 @@
 
         function updateCategoryOptions(specialist) {
             // Очищуємо список категорій
-            categorySelect.innerHTML = '<option value="">Оберіть категорію</option>';
+            categorySelect.innerHTML = '<option value="">Оберіть спеціальність</option>';
 
             if (specialist && specialistCategories[specialist]) {
                 // Додаємо категорії для обраної спеціальності

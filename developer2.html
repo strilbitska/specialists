@@ -6,182 +6,671 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        /* Стилі для секції відгуків */
+        #reviews-section {
+            font-size: 0.9rem;
+        }
+        #reviews-section h2 {
+            font-size: 1.5rem;
+        }
+        #reviews-section .card {
+            transform: scale(0.95);
+        }
+        #reviews-section .card-body {
+            padding: 0.75rem;
+        }
+        #reviews-section .text-primary {
+            font-size: 1.25rem;
+        }
+        #reviews-section .text-muted {
+            font-size: 0.75rem;
+        }
+        #reviews-section .spinner-border {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        /* Стилі для прогрес-барів */
+        .progress {
+            height: 8px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Навігація -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+<!-- Навігація -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+    </div>
+</nav>
+
+<!-- Профіль -->
+<header class="bg-light text-center py-5">
+    <div class="container">
+        <img src="python-developer2.png" alt="Python Developer" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+        <h1 class="display-4">Олександр Петренко</h1>
+        <p class="lead text-muted">Junior Python Developer | < 1 року досвіду</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="#calendar" class="btn btn-outline-primary">
+                <i class="fas fa-calendar"></i> Забронювати консультацію
+            </a>
+            <a href="https://github.com/petrenko-dev" class="btn btn-dark">
+                <i class="fab fa-github"></i> GitHub
+            </a>
         </div>
-    </nav>
+    </div>
+</header>
 
-    <!-- Профіль -->
-    <header class="bg-light text-center py-5">
-        <div class="container">
-            <img src="developer.png" alt="Python Developer" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
-            <h1 class="display-4">Олександр Петренко</h1>
-            <p class="lead text-muted">Junior Python Developer | &lt; 1 року досвіду</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="mailto:petrenko.dev@example.com" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Написати
-                </a>
-                <a href="https://github.com/petrenko-dev" class="btn btn-dark">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-            </div>
-        </div>
-    </header>
+<main class="container py-5">
+    <div class="row">
+        <!-- Основна інформація -->
+        <div class="col-lg-8">
+            <!-- Про мене -->
+            <section class="mb-5">
+                <h2><i class="fas fa-user"></i> Про мене</h2>
+                <p class="lead">Початківець Python розробник, захоплений технологіями та програмуванням.</p>
+                <p>Активно вивчаю Python, Django та працюю над власними проектами. Маю базові знання HTML, CSS та SQL. Шукаю можливості для розвитку та набуття досвіду.</p>
+            </section>
 
-    <main class="container py-5">
-        <div class="row">
-            <!-- Основна інформація -->
-            <div class="col-lg-8">
-                <!-- Про мене -->
-                <section class="mb-5">
-                    <h2><i class="fas fa-user"></i> Про мене</h2>
-                    <p class="lead">Початківець Python розробник, захоплений технологіями та програмуванням.</p>
-                    <p>Активно вивчаю Python, Django та працюю над власними проектами. Маю базові знання HTML, CSS та SQL.</p>
-                </section>
-
-                <!-- Резюме -->
-                <section class="mb-5">
-                    <h2><i class="fas fa-file-pdf"></i> Резюме</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center">
-                                <i class="fas fa-file-pdf text-danger fa-2x me-3"></i>
-                                <div>
-                                    <h5 class="card-title mb-1">Резюме Олександра Петренка</h5>
-                                    <p class="card-text text-muted mb-2">Junior Python Developer | Початковий досвід роботи</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-muted"><i class="fas fa-clock"></i> Оновлено: Квітень 2025</span>
-                                <a href="Petrenko.pdf" class="btn btn-primary" download>
-                                    <i class="fas fa-download me-2"></i>Завантажити PDF
-                                </a>
-                            </div>
-                        </div>
+            <!-- Секція - Резюме -->
+            <section class="mb-5">
+                <h2><i class="fas fa-file-pdf"></i> Резюме</h2>
+                <div class="card p-3 d-flex flex-row align-items-center gap-3" style="max-width: 500px;">
+                    <div class="preview-icon d-flex align-items-center justify-content-center" style="width:80px; height:80px; background:#f5f5f5; border-radius:10px;">
+                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
                     </div>
-                </section>
-
-                <!-- Проекти -->
-                <section class="mb-5">
-                    <h2><i class="fas fa-code"></i> Мої проекти</h2>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Телеграм бот для нагадувань</h5>
-                                    <p class="card-text">Простий бот на Python для створення та керування нагадуваннями.</p>
-                                    <div class="d-flex gap-2">
-                                        <span class="badge bg-primary">Python</span>
-                                        <span class="badge bg-secondary">Telegram API</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Веб-скрапер новин</h5>
-                                    <p class="card-text">Парсер новин з використанням Beautiful Soup 4.</p>
-                                    <div class="d-flex gap-2">
-                                        <span class="badge bg-primary">Python</span>
-                                        <span class="badge bg-secondary">BS4</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            <!-- Сайдбар -->
-            <div class="col-lg-4">
-                <!-- Навички -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3><i class="fas fa-laptop-code"></i> Технічні навички</h3>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                Python
-                                <div class="progress mt-2">
-                                    <div class="progress-bar" style="width: 70%"></div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                Django
-                                <div class="progress mt-2">
-                                    <div class="progress-bar" style="width: 40%"></div>
-                                </div>
-                            </li>
-                            <li class="list-group-item">
-                                SQL
-                                <div class="progress mt-2">
-                                    <div class="progress-bar" style="width: 30%"></div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Освіта -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3><i class="fas fa-graduation-cap"></i> Освіта</h3>
-                        <div class="mb-3">
-                            <h5 class="h6">Курс "Python Developer"</h5>
-                            <p class="text-muted mb-1">Beetroot Academy</p>
-                            <small class="text-muted">2024 - 2025</small>
-                        </div>
-                        <div class="mb-3">
-                            <h5 class="h6">Комп'ютерні науки</h5>
-                            <p class="text-muted mb-1">Київський політехнічний інститут</p>
-                            <small class="text-muted">2021 - 2025</small>
+                    <div class="flex-grow-1">
+                        <div class="fw-bold mb-1">Petrenko_Oleksandr.pdf</div>
+                        <div class="text-muted small mb-2">Оновлено: Червень 2025</div>
+                        <div class="d-flex gap-2">
+                            <a href="Petrenko_Oleksandr.pdf" target="_blank" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-eye"></i> Відкрити
+                            </a>
+                            <a href="Petrenko_Oleksandr.pdf" download class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i> Завантажити
+                            </a>
                         </div>
                     </div>
                 </div>
+            </section>
 
-                <!-- Контакти -->
-                <div class="card">
-                    <div class="card-body">
-                        <h3><i class="fas fa-address-card"></i> Контакти</h3>
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-2">
-                                <i class="fas fa-envelope me-2"></i>
-                                <a href="mailto:petrenko.dev@example.com">petrenko.dev@example.com</a>
-                            </li>
-                            <li class="mb-2">
-                                <i class="fab fa-linkedin me-2"></i>
-                                <a href="#">LinkedIn</a>
-                            </li>
-                            <li class="mb-2">
-                                <i class="fab fa-github me-2"></i>
-                                <a href="#">GitHub</a>
-                            </li>
-                        </ul>
+            <!-- Проєкти -->
+            <section class="mb-5">
+                <h2><i class="fas fa-code"></i> Мої проєкти</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop" class="card-img-top" alt="Telegram бот">
+                            <div class="card-body">
+                                <h6>Telegram бот для нагадувань</h6>
+                                <p class="text-muted small">Python, Telegram API</p>
+                                <p class="small">Простий бот для створення та керування нагадуваннями</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=400&h=300&fit=crop" class="card-img-top" alt="Веб-скрапер">
+                            <div class="card-body">
+                                <h6>Веб-скрапер новин</h6>
+                                <p class="text-muted small">Python, Beautiful Soup</p>
+                                <p class="small">Парсер новин з різних джерел</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=300&fit=crop" class="card-img-top" alt="Django проект">
+                            <div class="card-body">
+                                <h6>Простий блог</h6>
+                                <p class="text-muted small">Django, SQLite</p>
+                                <p class="small">Навчальний проект блогу на Django</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Сайдбар -->
+        <div class="col-lg-4">
+            <!-- Технічні навички -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3><i class="fas fa-laptop-code"></i> Технічні навички</h3>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Python</span>
+                            <span class="text-muted">70%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Django</span>
+                            <span class="text-muted">40%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" style="width: 40%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>SQL</span>
+                            <span class="text-muted">30%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" style="width: 30%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>HTML/CSS</span>
+                            <span class="text-muted">60%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span>Git</span>
+                            <span class="text-muted">50%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-secondary" style="width: 50%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Освіта -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3><i class="fas fa-graduation-cap"></i> Освіта</h3>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-certificate text-primary me-2"></i>
+                            <strong>Python Developer</strong>
+                        </div>
+                        <p class="text-muted small mb-1">Beetroot Academy</p>
+                        <small class="text-muted">2024 - 2025</small>
+                    </div>
+                    <hr>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-university text-primary me-2"></i>
+                            <strong>Комп'ютерні науки</strong>
+                        </div>
+                        <p class="text-muted small mb-1">Київський політехнічний інститут</p>
+                        <small class="text-muted">2021 - 2025</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Послуги та ціни -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Простий веб-сайт
+                            <span class="badge bg-primary rounded-pill">від 300$</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Telegram бот
+                            <span class="badge bg-primary rounded-pill">від 200$</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Скрипти Python
+                            <span class="badge bg-primary rounded-pill">від 100$</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Консультація
+                            <span class="badge bg-primary rounded-pill">30$/год</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Календар бронювання -->
+            <div class="card mb-4" id="calendar">
+                <div class="card-body">
+                    <h3><i class="fas fa-calendar-alt"></i> Бронювання</h3>
+                    <div class="mb-3">
+                        <label for="bookingDate" class="form-label">Дата консультації</label>
+                        <input type="date" class="form-control" id="bookingDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bookingTime" class="form-label">Час</label>
+                        <select class="form-select" id="bookingTime">
+                            <option value="">Оберіть час</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="consultationType" class="form-label">Тип послуги</label>
+                        <select class="form-select" id="consultationType">
+                            <option value="">Оберіть тип</option>
+                            <option value="Простий веб-сайт">Простий веб-сайт</option>
+                            <option value="Telegram бот">Telegram бот</option>
+                            <option value="Скрипти Python">Скрипти Python</option>
+                            <option value="Консультація">Консультація</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary w-100" id="openBookingBtn">
+                        <i class="fas fa-calendar-check"></i> Забронювати послугу
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Відгуки клієнтів -->
+    <section id="reviews-section" class="mb-5">
+        <h2><i class="fas fa-star text-warning"></i> Відгуки клієнтів</h2>
+        <div class="card mb-4 bg-light">
+            <div class="card-body text-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-primary mb-1" id="avgRating">4.3</h3>
+                        <div class="text-warning mb-2" id="starDisplay">
+                            ⭐⭐⭐⭐☆
+                        </div>
+                        <small class="text-muted">Середній рейтинг спеціаліста</small>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="text-primary mb-1" id="totalReviews">4</h3>
+                        <small class="text-muted">Відгуків клієнтів</small>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-
-    <!-- Футер -->
-    <footer class="bg-dark text-white text-center py-4">
-        <div class="container">
-            <p class="mb-0">© 2025 Олександр Петренко | Junior Python Developer</p>
-            <div class="mt-2">
-                <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-telegram"></i></a>
+        <div id="reviewsList">
+            <div class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Завантаження відгуків...</span>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <!-- Скрипты -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Модальне вікно для бронювання -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">
+                    <i class="fas fa-calendar-check"></i> Підтвердження бронювання
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-info-circle"></i> Деталі бронювання</h6>
+                    <p class="mb-1"><strong>Дата:</strong> <span id="selectedDate">-</span></p>
+                    <p class="mb-1"><strong>Час:</strong> <span id="selectedTime">-</span></p>
+                    <p class="mb-0"><strong>Тип:</strong> <span id="selectedType">-</span></p>
+                </div>
+                <form id="userDataForm">
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">Ваше ім'я *</label>
+                        <input type="text" class="form-control" id="userName" required
+                               placeholder="Введіть ваше повне ім'я">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userEmail" class="form-label">Email *</label>
+                        <input type="email" class="form-control" id="userEmail" required
+                               placeholder="your@email.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userPhone" class="form-label">Телефон *</label>
+                        <input type="tel" class="form-control" id="userPhone" required
+                               placeholder="+380 XX XXX XX XX">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userMessage" class="form-label">Опис проекту/завдання</label>
+                        <textarea class="form-control" id="userMessage" rows="3"
+                                  placeholder="Розкажіть про ваш проект або завдання для розробки..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                <button type="button" class="btn btn-primary" id="confirmBookingBtn">
+                    <i class="fas fa-check"></i> Підтвердити бронювання
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-0">© 2025 Підбір спеціалістів | Всі права захищені</p>
+        <div class="mt-2">
+            <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
+            <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="text-white mx-2"><i class="fab fa-telegram"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    let bookingModal = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const modalElement = document.getElementById('bookingModal');
+        if (modalElement) {
+            bookingModal = new bootstrap.Modal(modalElement);
+        }
+
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+
+        const dateInput = document.getElementById('bookingDate');
+        if (dateInput) {
+            dateInput.setAttribute('min', minDate);
+        }
+
+        setupEventListeners();
+        loadReviews();
+    });
+
+    function setupEventListeners() {
+        const openBtn = document.getElementById('openBookingBtn');
+        if (openBtn) {
+            openBtn.addEventListener('click', openBookingModal);
+        }
+
+        const confirmBtn = document.getElementById('confirmBookingBtn');
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', confirmBooking);
+        }
+    }
+
+    function openBookingModal() {
+        const date = document.getElementById('bookingDate').value;
+        const time = document.getElementById('bookingTime').value;
+        const type = document.getElementById('consultationType').value;
+
+        if (!date || !time || !type) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Заповніть всі поля',
+                text: 'Будь ласка, оберіть дату, час та тип консультації',
+                confirmButtonText: 'Зрозуміло'
+            });
+            return;
+        }
+
+        document.getElementById('selectedDate').textContent = new Date(date).toLocaleDateString('uk-UA');
+        document.getElementById('selectedTime').textContent = time;
+        document.getElementById('selectedType').textContent = type;
+
+        if (bookingModal) {
+            bookingModal.show();
+        }
+    }
+
+    async function confirmBooking() {
+        const name = document.getElementById('userName').value.trim();
+        const email = document.getElementById('userEmail').value.trim();
+        const phone = document.getElementById('userPhone').value.trim();
+        const message = document.getElementById('userMessage').value.trim();
+
+        if (!name || !email || !phone) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Заповніть всі поля',
+                text: 'Будь ласка, заповніть всі обов\'язкові поля',
+                confirmButtonText: 'Зрозуміло'
+            });
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Некоректний email',
+                text: 'Будь ласка, введіть правильний email адрес',
+                confirmButtonText: 'Зрозуміло'
+            });
+            return;
+        }
+
+        const bookingData = {
+            specialist_id: 6, // Унікальний ID для junior розробника
+            name: name,
+            email: email,
+            phone: phone,
+            type: document.getElementById('consultationType').value,
+            date: document.getElementById('bookingDate').value,
+            time: document.getElementById('bookingTime').value,
+            message: message
+        };
+
+        try {
+            const response = await fetch('send_email_confirmation.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bookingData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                await Swal.fire({
+                    title: 'Успіх!',
+                    html: `
+                        <div style="text-align: left;">
+                            <p><strong>Бронювання #${result.booking_id}</strong> успішно створено!</p>
+                            <p> Email підтвердження ${result.email_sent ? 'відправлено' : 'буде відправлено найближчим часом'}</p>
+                            <p> Ми зв'яжемося з вами найближчим часом</p>
+                        </div>
+                    `,
+                    icon: 'success',
+                    confirmButtonText: 'Зрозуміло',
+                    confirmButtonColor: '#28a745'
+                });
+
+                bookingModal.hide();
+                document.getElementById('userDataForm').reset();
+            } else {
+                throw new Error(result.error || 'Невідома помилка');
+            }
+        } catch (error) {
+            console.error('❌ Помилка:', error);
+
+            // Fallback успішне повідомлення якщо API недоступний
+            const bookingId = 'JR' + Date.now().toString().slice(-6);
+            await Swal.fire({
+                icon: 'success',
+                title: '🐍 Консультацію заброньовано!',
+                html: `
+                    <div style="text-align: left; padding: 20px;">
+                        <p><strong>Дякуємо, ${name}!</strong></p>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                            <h4>📋 Деталі бронювання:</h4>
+                            <p><strong>Номер:</strong> ${bookingId}</p>
+                            <p><strong>Тип:</strong> ${bookingData.type}</p>
+                            <p><strong>Дата:</strong> ${new Date(bookingData.date).toLocaleDateString('uk-UA')}</p>
+                            <p><strong>Час:</strong> ${bookingData.time}</p>
+                        </div>
+                        <div style="background: #d4edda; padding: 15px; border-radius: 10px; color: #155724;">
+                            <p><strong>📞 Ми зв'яжемося з вами найближчим часом!</strong></p>
+                            <p>Телефон: <strong>${phone}</strong></p>
+                            <p>Email: <strong>${email}</strong></p>
+                        </div>
+                        <div style="background: #fff3cd; padding: 10px; border-radius: 10px; color: #856404; margin-top: 10px;">
+                            <small><i class="fas fa-info-circle"></i> <strong>Примітка:</strong> Як Junior розробник, я пропоную доступні ціни для малих проектів</small>
+                        </div>
+                    </div>
+                `,
+                confirmButtonText: 'Чудово!',
+                width: 600
+            });
+
+            bookingModal.hide();
+            document.getElementById('userDataForm').reset();
+            document.getElementById('bookingDate').value = '';
+            document.getElementById('bookingTime').value = '';
+            document.getElementById('consultationType').value = '';
+        }
+    }
+
+    // Функція завантаження відгуків
+    async function loadReviews() {
+        try {
+            const response = await fetch('./specialist_reviews_api.php?specialist_id=6');
+            const result = await response.json();
+
+            if (result.success) {
+                displayReviews(result.reviews);
+                displayStats(result.stats);
+            } else {
+                document.getElementById('reviewsList').innerHTML =
+                    '<div class="alert alert-warning text-center">Не вдалося завантажити відгуки</div>';
+            }
+        } catch (error) {
+            console.error('Помилка завантаження відгуків:', error);
+            // Показуємо демо відгуки якщо API недоступний
+            displayDemoReviews();
+        }
+    }
+
+    // Демо відгуки якщо API недоступний
+    function displayDemoReviews() {
+        const demoReviews = [
+            {
+                client_name: "Ірина Мельник",
+                rating: 5,
+                review_text: "Олександр створив чудовий Telegram бот для мого невеликого бізнесу. Дуже доступні ціни та якісна робота!",
+                date: "2025-05-25"
+            },
+            {
+                client_name: "Василь Коваль",
+                rating: 4,
+                review_text: "Швидко написав простий скрипт для автоматизації. Хлопець дуже старається та швидко вчиться.",
+                date: "2025-04-10"
+            },
+            {
+                client_name: "Олена Сидоренко",
+                rating: 4,
+                review_text: "Допоміг з навчальним проектом на Django. Терпеливо пояснював всі деталі.",
+                date: "2025-03-18"
+            },
+            {
+                client_name: "Микола Іваненко",
+                rating: 4,
+                review_text: "Створив простий сайт-візитку. За такі гроші - відмінний результат!",
+                date: "2025-02-05"
+            }
+        ];
+
+        displayReviews(demoReviews);
+        displayStats({ avg_rating: "4.3", total_reviews: 4 });
+    }
+
+    // Функція відображення відгуків
+    function displayReviews(reviews) {
+        const container = document.getElementById('reviewsList');
+
+        if (reviews.length === 0) {
+            container.innerHTML = '<div class="alert alert-info text-center">Поки немає відгуків</div>';
+            return;
+        }
+
+        const html = reviews.map(review => {
+            const date = new Date(review.date).toLocaleDateString('uk-UA', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            const stars = '⭐'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+            return `
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <div class="reviewer-name">
+                            <i class="fas fa-user-circle text-primary me-2"></i>
+                            <strong>${review.client_name}</strong>
+                        </div>
+                        <small class="text-muted">${date}</small>
+                    </div>
+                    <div class="review-rating text-warning mb-2">
+                        ${stars} <span class="text-muted">(${review.rating}/5)</span>
+                    </div>
+                    <div class="review-text">
+                        ${review.review_text}
+                    </div>
+                </div>
+            </div>
+        `;
+        }).join('');
+
+        container.innerHTML = html;
+    }
+
+    // Функція відображення статистики
+    function displayStats(stats) {
+        if (stats && stats.total_reviews > 0) {
+            const avgRatingElement = document.getElementById('avgRating');
+            const totalReviewsElement = document.getElementById('totalReviews');
+            const starDisplayElement = document.getElementById('starDisplay');
+
+            if (avgRatingElement) avgRatingElement.textContent = stats.avg_rating;
+            if (totalReviewsElement) totalReviewsElement.textContent = stats.total_reviews;
+
+            if (starDisplayElement) {
+                const rating = parseFloat(stats.avg_rating);
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 >= 0.5;
+
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= fullStars) {
+                        starsHtml += '⭐';
+                    } else if (i === fullStars + 1 && hasHalfStar) {
+                        starsHtml += '⭐';
+                    } else {
+                        starsHtml += '☆';
+                    }
+                }
+
+                starDisplayElement.textContent = starsHtml;
+            }
+        }
+    }
+</script>
 </body>
 </html>

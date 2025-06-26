@@ -6,153 +6,542 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        /* Стилі для секції відгуків */
+        #reviews-section {
+            font-size: 0.9rem; /* Зменшуємо розмір шрифту */
+        }
+        #reviews-section h2 {
+            font-size: 1.5rem; /* Менший розмір заголовка */
+        }
+        #reviews-section .card {
+            transform: scale(0.95); /* Зменшуємо масштаб картки */
+        }
+        #reviews-section .card-body {
+            padding: 0.75rem; /* Зменшуємо відступи в картці */
+        }
+        #reviews-section .text-primary {
+            font-size: 1.25rem; /* Зменшуємо розмір цифр рейтингу */
+        }
+        #reviews-section .text-muted {
+            font-size: 0.75rem; /* Зменшуємо розмір допоміжного тексту */
+        }
+        #reviews-section .spinner-border {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <!-- Навігація -->
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+<!-- Навігація -->
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="in.html"><i class="fas fa-arrow-left"></i> Назад</a>
+    </div>
+</nav>
+
+<!-- Профіль -->
+<header class="bg-light text-center py-5">
+    <div class="container">
+        <img src="data-analyst.jpg" alt="Data Analyst" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
+        <h1 class="display-4">Андрій Ковальчук</h1>
+        <p class="lead text-muted">Data Analyst | без досвіду</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="#calendar" class="btn btn-outline-primary">
+                <i class="fas fa-calendar"></i> Забронювати консультацію
+            </a>
         </div>
-    </nav>
+    </div>
+</header>
 
-    <!-- Профіль -->
-    <header class="bg-light text-center py-5">
-        <div class="container">
-            <img src="img/data-analyst.jpg" alt="Data Analyst" class="rounded-circle shadow mb-4" style="width: 200px; height: 200px; object-fit: cover;">
-            <h1 class="display-4">Андрій Ковальчук</h1>
-            <p class="lead text-muted">Data Analyst | без досвіду</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="mailto:andrii.data@example.com" class="btn btn-primary">
-                    <i class="fas fa-envelope"></i> Написати
-                </a>
-                <a href="#calendar" class="btn btn-outline-primary">
-                    <i class="fas fa-calendar"></i> Забронювати консультацію
-                </a>
-            </div>
-        </div>
-    </header>
+<main class="container py-5">
+    <div class="row">
+        <!-- Основна інформація -->
+        <div class="col-lg-8">
+            <!-- Про мене -->
+            <section class="mb-5">
+                <h2><i class="fas fa-user"></i> Про мене</h2>
+                <p class="lead">Data Analyst з фокусом на бізнес-аналітиці та візуалізації даних.</p>
+                <p>Спеціалізуюсь на аналізі великих масивів даних, створенні дашбордів та прогнозній аналітиці. Працюю з Python, SQL, Power BI та Tableau.</p>
+            </section>
 
-    <main class="container py-5">
-        <div class="row">
-            <div class="col-lg-8">
-                <!-- Про мене -->
-                <section class="mb-5">
-                    <h2><i class="fas fa-user"></i> Про мене</h2>
-                    <p class="lead">Data Analyst з фокусом на бізнес-аналітиці та візуалізації даних.</p>
-                    <p>Спеціалізуюсь на аналізі великих масивів даних, створенні дашбордів та прогнозній аналітиці. Працюю з Python, SQL, Power BI та Tableau.</p>
-                </section>
-
-                <!-- Проекти -->
-                <section class="mb-5">
-                    <h2><i class="fas fa-project-diagram"></i> Ключові проекти</h2>
-                    <div class="row">
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Аналіз продажів</h5>
-                                    <p class="text-muted">Python, Pandas, Power BI</p>
-                                    <ul class="list-unstyled">
-                                        <li><i class="fas fa-check text-success"></i> Збільшення конверсії на 40%</li>
-                                        <li><i class="fas fa-check text-success"></i> Оптимізація воронки продажів</li>
-                                    </ul>
-                                </div>
-                            </div>
+            <!-- Секція - Резюме -->
+            <section class="mb-5">
+                <h2><i class="fas fa-file-pdf"></i> Резюме</h2>
+                <div class="card p-3 d-flex flex-row align-items-center gap-3" style="max-width: 500px;">
+                    <div class="preview-icon d-flex align-items-center justify-content-center" style="width:80px; height:80px; background:#f5f5f5; border-radius:10px;">
+                        <i class="fas fa-file-pdf fa-3x text-danger"></i>
+                    </div>
+                    <div class="flex-grow-1">
+                        <div class="fw-bold mb-1">Kovalchuk.pdf</div>
+                        <div class="text-muted small mb-2">Оновлено: Травень 2025</div>
+                        <div class="d-flex gap-2">
+                            <a href="Kovalchuk.pdf" target="_blank" class="btn btn-outline-primary btn-sm">
+                                <i class="fas fa-eye"></i> Відкрити
+                            </a>
+                            <a href="Kovalchuk.pdf" download class="btn btn-primary btn-sm">
+                                <i class="fas fa-download"></i> Завантажити
+                            </a>
                         </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title">Прогнозування попиту</h5>
-                                    <p class="text-muted">Python, scikit-learn, SQL</p>
-                                    <ul class="list-unstyled">
-                                        <li><i class="fas fa-check text-success"></i> Точність прогнозу 87%</li>
-                                        <li><i class="fas fa-check text-success"></i> Оптимізація складських запасів</li>
-                                    </ul>
-                                </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Проекти -->
+            <section class="mb-5">
+                <h2><i class="fas fa-project-diagram"></i> Ключові проекти</h2>
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" class="card-img-top" alt="Аналіз даних">
+                            <div class="card-body">
+                                <h6>Аналіз продажів</h6>
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
-
-            <!-- Сайдбар -->
-            <div class="col-lg-4">
-                <!-- Навички -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3><i class="fas fa-laptop-code"></i> Технічні навички</h3>
-                        <div class="mb-3">
-                            <p class="mb-1">Python</p>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 95%"></div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" class="card-img-top" alt="Дашборд">
+                            <div class="card-body">
+                                <h6>Створення дашбордів</h6>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <p class="mb-1">SQL</p>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <p class="mb-1">Power BI</p>
-                            <div class="progress">
-                                <div class="progress-bar" style="width: 85%"></div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card">
+                            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=300&fit=crop" class="card-img-top" alt="Прогнозування">
+                            <div class="card-body">
+                                <h6>Прогнозування попиту</h6>
                             </div>
                         </div>
                     </div>
                 </div>
+            </section>
+        </div>
 
-                <!-- Послуги та ціни -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Аналіз даних
-                                <span class="badge bg-primary rounded-pill">від 800$</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Створення дашбордів
-                                <span class="badge bg-primary rounded-pill">від 500$</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                Консультація
-                                <span class="badge bg-primary rounded-pill">100$/год</span>
-                            </li>
-                        </ul>
-                    </div>
+        <!-- Сайдбар -->
+        <div class="col-lg-4">
+            <!-- Послуги та ціни -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h3><i class="fas fa-tags"></i> Послуги та ціни</h3>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Аналіз даних
+                            <span class="badge bg-primary rounded-pill">від 800$</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Створення дашбордів
+                            <span class="badge bg-primary rounded-pill">від 500$</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            Консультація
+                            <span class="badge bg-primary rounded-pill">100$/год</span>
+                        </li>
+                    </ul>
                 </div>
+            </div>
 
-                <!-- Календар -->
-                <div class="card mb-4" id="calendar">
-                    <div class="card-body">
-                        <h3><i class="fas fa-calendar-alt"></i> Забронювати консультацію</h3>
-                        <form id="bookingForm">
-                            <!-- Аналогичная форма бронирования как в hr.html -->
-                        </form>
+            <!-- Календар бронювання -->
+            <div class="card mb-4" id="calendar">
+                <div class="card-body">
+                    <h3><i class="fas fa-calendar-alt"></i> Бронювання</h3>
+                    <div class="mb-3">
+                        <label for="bookingDate" class="form-label">Дата послуги</label>
+                        <input type="date" class="form-control" id="bookingDate">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bookingTime" class="form-label">Час</label>
+                        <select class="form-select" id="bookingTime">
+                            <option value="">Оберіть час</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="consultationType" class="form-label">Тип послуги</label>
+                        <select class="form-select" id="consultationType">
+                            <option value="">Оберіть тип</option>
+                            <option value="Аналіз даних">Аналіз даних</option>
+                            <option value="Створення дашбордів">Створення дашбордів</option>
+                            <option value="Консультація">Консультація</option>
+                            <option value="Прогнозування">Прогнозування</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary w-100" id="openBookingBtn">
+                        <i class="fas fa-calendar-check"></i> Забронювати послугу
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Відгуки клієнтів -->
+    <section id="reviews-section" class="mb-5">
+        <h2><i class="fas fa-star text-warning"></i> Відгуки клієнтів</h2>
+        <div class="card mb-4 bg-light">
+            <div class="card-body text-center">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3 class="text-primary mb-1" id="avgRating">4.2</h3>
+                        <div class="text-warning mb-2" id="starDisplay">
+                            ⭐⭐⭐⭐☆
+                        </div>
+                        <small class="text-muted">Середній рейтинг спеціаліста</small>
+                    </div>
+                    <div class="col-md-6">
+                        <h3 class="text-primary mb-1" id="totalReviews">3</h3>
+                        <small class="text-muted">Відгуків клієнтів</small>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
-
-    <footer class="bg-dark text-white text-center py-4">
-        <div class="container">
-            <p class="mb-0">© 2025 Андрій Ковальчук | Data Analyst</p>
-            <div class="mt-2">
-                <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-white mx-2"><i class="fab fa-kaggle"></i></a>
+        <div id="reviewsList">
+            <div class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Завантаження відгуків...</span>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
+</main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Модальне вікно для бронювання -->
+<div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="bookingModalLabel">
+                    <i class="fas fa-calendar-check"></i> Підтвердження бронювання
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <h6><i class="fas fa-info-circle"></i> Деталі бронювання</h6>
+                    <p class="mb-1"><strong>Дата:</strong> <span id="selectedDate">-</span></p>
+                    <p class="mb-1"><strong>Час:</strong> <span id="selectedTime">-</span></p>
+                    <p class="mb-0"><strong>Тип:</strong> <span id="selectedType">-</span></p>
+                </div>
+                <form id="userDataForm">
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">Ваше ім'я *</label>
+                        <input type="text" class="form-control" id="userName" required
+                               placeholder="Введіть ваше повне ім'я">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userEmail" class="form-label">Email *</label>
+                        <input type="email" class="form-control" id="userEmail" required
+                               placeholder="your@email.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userPhone" class="form-label">Телефон *</label>
+                        <input type="tel" class="form-control" id="userPhone" required
+                               placeholder="+380 XX XXX XX XX">
+                    </div>
+                    <div class="mb-3">
+                        <label for="userMessage" class="form-label">Додаткові побажання</label>
+                        <textarea class="form-control" id="userMessage" rows="3"
+                                  placeholder="Розкажіть про ваші вимоги до аналізу даних..."></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Скасувати</button>
+                <button type="button" class="btn btn-primary" id="confirmBookingBtn">
+                    <i class="fas fa-check"></i> Підтвердити бронювання
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Футер -->
+<footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+        <p class="mb-0">© 2025 Підбір спеціалістів | Всі права захищені</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    let bookingModal = null;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const modalElement = document.getElementById('bookingModal');
+        if (modalElement) {
+            bookingModal = new bootstrap.Modal(modalElement);
+        }
+
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        const minDate = tomorrow.toISOString().split('T')[0];
+
+        const dateInput = document.getElementById('bookingDate');
+        if (dateInput) {
+            dateInput.setAttribute('min', minDate);
+        }
+
+        setupEventListeners();
+        loadReviews();
+    });
+
+    function setupEventListeners() {
+        const openBtn = document.getElementById('openBookingBtn');
+        if (openBtn) {
+            openBtn.addEventListener('click', openBookingModal);
+        }
+
+        const confirmBtn = document.getElementById('confirmBookingBtn');
+        if (confirmBtn) {
+            confirmBtn.addEventListener('click', confirmBooking);
+        }
+    }
+
+    function openBookingModal() {
+        const date = document.getElementById('bookingDate').value;
+        const time = document.getElementById('bookingTime').value;
+        const type = document.getElementById('consultationType').value;
+
+        if (!date || !time || !type) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Заповніть всі поля',
+                text: 'Будь ласка, оберіть дату, час та тип консультації',
+                confirmButtonText: 'Зрозуміло'
+            });
+            return;
+        }
+
+        document.getElementById('selectedDate').textContent = new Date(date).toLocaleDateString('uk-UA');
+        document.getElementById('selectedTime').textContent = time;
+        document.getElementById('selectedType').textContent = type;
+
+        if (bookingModal) {
+            bookingModal.show();
+        }
+    }
+
+    async function confirmBooking() {
+        const name = document.getElementById('userName').value.trim();
+        const email = document.getElementById('userEmail').value.trim();
+        const phone = document.getElementById('userPhone').value.trim();
+        const message = document.getElementById('userMessage').value.trim();
+
+        if (!name || !email || !phone) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Заповніть всі поля',
+                text: 'Будь ласка, заповніть всі обов\'язкові поля',
+                confirmButtonText: 'Зрозуміло'
+            });
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Некоректний email',
+                text: 'Будь ласка, введіть правильний email адрес',
+                confirmButtonText: 'Зрозуміло'
+            });
+            return;
+        }
+
+        bookingModal.hide();
+        const bookingData = {
+            specialist_id: 2,
+            name: document.getElementById('userName').value,
+            email: document.getElementById('userEmail').value,
+            phone: document.getElementById('userPhone').value,
+            type: document.getElementById('consultationType').value,
+            date: document.getElementById('bookingDate').value,
+            time: document.getElementById('bookingTime').value,
+            message: document.getElementById('userMessage').value
+        };
+
+        try {
+            const response = await fetch('send_email_confirmation.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(bookingData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                await Swal.fire({
+                    title: 'Успіх!',
+                    html: `
+                        <div style="text-align: left;">
+                            <p><strong>Бронювання #${result.booking_id}</strong> успішно створено!</p>
+                            <p> Email підтвердження ${result.email_sent ? 'відправлено' : 'буде відправлено найближчим часом'}</p>
+                            <p> Ми зв'яжемося з вами найближчим часом</p>
+                        </div>
+                    `,
+                    icon: 'success',
+                    confirmButtonText: 'Зрозуміло',
+                    confirmButtonColor: '#28a745'
+                });
+
+                bookingModal.hide();
+                document.getElementById('userDataForm').reset();
+            } else {
+                throw new Error(result.error || 'Невідома помилка');
+            }
+        } catch (error) {
+            console.error('❌ Помилка:', error);
+            await Swal.fire({
+                title: '❌ Помилка',
+                text: `Помилка: ${error.message}`,
+                icon: 'error',
+                confirmButtonText: 'Спробувати ще раз'
+            });
+        }
+
+        const bookingId = 'BK' + Date.now().toString().slice(-6);
+        Swal.fire({
+            icon: 'success',
+            title: '🎉 Консультацію заброньовано!',
+            html: `
+                <div style="text-align: left; padding: 20px;">
+                    <p><strong>Дякуємо, ${name}!</strong></p>
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 15px 0;">
+                        <h4>📋 Деталі бронювання:</h4>
+                        <p><strong>Номер:</strong> ${bookingId}</p>
+                        <p><strong>Тип:</strong> ${bookingData.type}</p>
+                        <p><strong>Дата:</strong> ${new Date(bookingData.date).toLocaleDateString('uk-UA')}</p>
+                        <p><strong>Час:</strong> ${bookingData.time}</p>
+                    </div>
+                    <div style="background: #d4edda; padding: 15px; border-radius: 10px; color: #155724;">
+                        <p><strong>📞 Ми зв'яжемося з вами найближчим часом!</strong></p>
+                        <p>Телефон: <strong>${phone}</strong></p>
+                        <p>Email: <strong>${email}</strong></p>
+                    </div>
+                </div>
+            `,
+            confirmButtonText: 'Чудово!',
+            width: 600
+        });
+
+        document.getElementById('userDataForm').reset();
+        document.getElementById('bookingDate').value = '';
+        document.getElementById('bookingTime').value = '';
+        document.getElementById('consultationType').value = '';
+    }
+
+    // Функція завантаження відгуків
+    async function loadReviews() {
+        try {
+            const response = await fetch('./specialist_reviews_api.php?specialist_id=2');
+            const result = await response.json();
+
+            if (result.success) {
+                displayReviews(result.reviews);
+                displayStats(result.stats);
+            } else {
+                document.getElementById('reviewsList').innerHTML =
+                    '<div class="alert alert-warning text-center">Не вдалося завантажити відгуки</div>';
+            }
+        } catch (error) {
+            console.error('Помилка завантаження відгуків:', error);
+            document.getElementById('reviewsList').innerHTML =
+                '<div class="alert alert-danger text-center">Помилка завантаження відгуків</div>';
+        }
+    }
+
+    // Функція відображення відгуків
+    function displayReviews(reviews) {
+        const container = document.getElementById('reviewsList');
+
+        if (reviews.length === 0) {
+            container.innerHTML = '<div class="alert alert-info text-center">Поки немає відгуків</div>';
+            return;
+        }
+
+        const html = reviews.map(review => {
+            const date = new Date(review.date).toLocaleDateString('uk-UA', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Створюємо зірки
+            const stars = '⭐'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
+
+            return `
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="reviewer-name">
+                        <i class="fas fa-user-circle text-primary me-2"></i>
+                        ${review.client_name}
+                    </div>
+                    <div class="review-date">${date}</div>
+                </div>
+                <div class="review-rating text-warning mb-3">
+                    ${stars} <span class="text-muted">(${review.rating}/5)</span>
+                </div>
+                <div class="review-text">
+                    <div class="review-quote">${review.review_text}</div>
+                </div>
+            </div>
+        `;
+        }).join('');
+
+        container.innerHTML = html;
+    }
+
+    // Функція відображення статистики
+    function displayStats(stats) {
+        if (stats && stats.total_reviews > 0) {
+            const avgRatingElement = document.getElementById('avgRating');
+            const totalReviewsElement = document.getElementById('totalReviews');
+            const starDisplayElement = document.getElementById('starDisplay');
+
+            if (avgRatingElement) avgRatingElement.textContent = stats.avg_rating;
+            if (totalReviewsElement) totalReviewsElement.textContent = stats.total_reviews;
+
+            // Оновлюємо зірки у статистиці
+            if (starDisplayElement) {
+                const rating = parseFloat(stats.avg_rating);
+                const fullStars = Math.floor(rating);
+                const hasHalfStar = rating % 1 >= 0.5;
+
+                let starsHtml = '';
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= fullStars) {
+                        starsHtml += '⭐';
+                    } else if (i === fullStars + 1 && hasHalfStar) {
+                        starsHtml += '⭐';
+                    } else {
+                        starsHtml += '☆';
+                    }
+                }
+
+                starDisplayElement.textContent = starsHtml;
+            }
+        }
+    }
+</script>
 </body>
 </html>
-````
-
-Хотите, чтобы я показал код для DevOps инженера?
-
-Обнаружен похожий код с 5 типами лицензий
