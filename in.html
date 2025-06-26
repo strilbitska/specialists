@@ -12,7 +12,6 @@
 <div class="d-flex">
     <!-- Бокове меню -->
     <div id="sidebar-container" class="sidebar bg-dark text-white p-3 d-flex flex-column">
-
     </div>
 
     <!-- Основний контент -->
@@ -23,41 +22,23 @@
             <h4 class="display-7">Швидкий та ефективний підбір професіоналів для вашого проекту</h4>
             <button class="btn btn-light btn-lg" onclick="scrollToSearch()">Почати пошук</button>
         </div>
-        <!-- Змінюю форму пошуку -->
+
+        <!-- Форма пошуку з груповою фільтрацією -->
         <div class="search-section p-4 rounded mb-5" id="searchSection">
             <h3 class="mb-4">Швидкий пошук спеціаліста</h3>
-            <form id="searchForm" onsubmit="return handleSearch(event)">
+            <form id="searchForm">
                 <div class="row g-3">
                     <div class="col-md-5">
                         <select class="form-select" id="specialistSelect">
-                            <option value="" selected>Виберіть категорію</option>
-                            <option value="photographer.html">📸 Фото/відео</option>
-                            <option value="designer.html">🎨 UI/UX дизайнер</option>
-                            <option value="developer.html">💻 Python розробники</option>
-                            <option value="economist.html">📊 Економіст</option>
-                            <option value="hr.html">🧑‍💼 HR-менеджер</option>
-                            <option value="business-analyst.html">👨‍💼 Бізнес-аналітик</option>
-                            <option value="videographer.html">🎥 Відеограф</option>
-                            <option value="smm.html">🎯 SMM-менеджер</option>
-                            <option value="data-analyst.html">📊 Data Analyst</option>
-                            <option value="devOps.html">🖥 DevOps інженер</option>
-                            <option value="3d-designer.html">🎮 3D дизайнер</option>
+                            <option value="">Виберіть спеціальність</option>
+                            <option value="📸 Фото/відео">📸 Фото/відео</option>
+                            <option value="💼 Бізнес">💼 Бізнес</option>
+                            <option value="💻 Розробка ПЗ">💻 Розробка ПЗ</option>
                         </select>
                     </div>
                     <div class="col-md-4">
-                        <select class="form-select" id="categorySelect">
-                            <option value="" selected>Виберіть категорію</option>
-                            <option value="photographer.html">📸 Фотографи</option>
-                            <option value="designer.html">🎨 UI/UX дизайнери</option>
-                            <option value="developer.html">💻 Python розробники</option>
-                            <option value="economist.html">📊 Економісти</option>
-                            <option value="hr.html">🧑‍💼 HR-менеджери</option>
-                            <option value="business-analyst.html">👨‍💼 Бізнес-аналітики</option>
-                            <option value="videographer.html">🎥 Відеографи</option>
-                            <option value="smm.html">🎯 SMM-менеджери</option>
-                            <option value="data-analyst.html">📊 Data Analysts</option>
-                            <option value="devOps.html">🖥 DevOps інженери</option>
-                            <option value="3d-designer.html">🎮 3D дизайнери</option>
+                        <select class="form-select" id="categorySelect" disabled>
+                            <option value="">Оберіть категорію</option>
                         </select>
                     </div>
                     <div class="col-md-3">
@@ -66,49 +47,6 @@
                 </div>
             </form>
         </div>
-
-        <!-- Заменяем JavaScript код -->
-        <script>
-            // Функція для прокрутки до форми пошуку
-            function scrollToSearch() {
-                document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' });
-            }
-
-            // Обробка пошуку
-            document.addEventListener('DOMContentLoaded', function() {
-                const searchForm = document.getElementById('searchForm');
-                const specialistSelect = document.getElementById('specialistSelect');
-                const categorySelect = document.getElementById('categorySelect');
-
-                // Обробник форми пошуку
-                function handleSearch(event) {
-                    event.preventDefault();
-
-                    const selectedSpecialist = specialistSelect.value;
-                    const selectedCategory = categorySelect.value;
-
-                    // Перевірка чи вибрано хоча б один параметр
-                    if (!selectedSpecialist && !selectedCategory) {
-                        alert('Будь ласка, виберіть спеціаліста або категорію.');
-                        return false;
-                    }
-
-                    // Пріоритет надається вибору спеціаліста
-                    if (selectedSpecialist) {
-                        window.location.href = selectedSpecialist;
-                        return false;
-                    }
-
-                    // Якщо спеціаліст не вибраний, використовуємо категорію
-                    if (selectedCategory) {
-                        window.location.href = selectedCategory;
-                        return false;
-                    }
-                }
-
-                searchForm.addEventListener('submit', handleSearch);
-            });
-        </script>
 
         <!-- Переваги -->
         <div class="row mb-5">
@@ -140,35 +78,6 @@
                 </div>
             </div>
         </div>
-        <!-- Статистика -->
-        <div class="stats-section text-center py-5">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <h2 class="display-4 fw-bold">10+</h2>
-                        <p>Спеціалістів</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <h2 class="display-4 fw-bold">100+</h2>
-                        <p>Успішних проектів</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <h2 class="display-4 fw-bold">98%</h2>
-                        <p>Задоволених клієнтів</p>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="stat-item">
-                        <h2 class="display-4 fw-bold">24/7</h2>
-                        <p>Підтримка</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -177,79 +86,119 @@
     <p>© 2025 Підбір спеціалістів | Всі права захищені</p>
 </footer>
 
+<!-- JavaScript бібліотеки -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/components.js"></script>
 
+<!-- Основний JavaScript для групової фільтрації -->
 <script>
+    // Об'єкт з відповідностями спеціальностей до категорій
+    const specialistCategories = {
+        "📸 Фото/відео": [
+            "📸 Фотографи",
+            "🎨 UI/UX дизайнери",
+            "🎮 3D дизайнери",
+            "🎥 Відеографи"
+        ],
+        "💼 Бізнес": [
+            "📊 Економіст",
+            "💼 Бізнес-аналітик",
+            "🎯 SMM-менеджер",
+            "📊 Data Analyst",
+            "💼 HR-менеджер"
+        ],
+        "💻 Розробка ПЗ": [
+            "💻 Python розробники",
+            "⚙️ DevOps інженери"
+        ]
+    };
+
+    // Відповідності категорій до HTML-сторінок
+    const categoryPages = {
+        "📸 Фотографи": "photographer.html",
+        "🎨 UI/UX дизайнери": "ui-ux-designer.html",
+        "🎮 3D дизайнери": "3d-designer.html",
+        "🎥 Відеографи": "videographer.html",
+        "📊 Економіст": "economist.html",
+        "💼 Бізнес-аналітик": "business-analyst.html",
+        "🎯 SMM-менеджер": "smm-manager.html",
+        "📊 Data Analyst": "data-analyst.html",
+        "💼 HR-менеджер": "hr-manager.html",
+        "💻 Python розробники": "python-developer.html",
+        "⚙️ DevOps інженери": "devops-engineer.html"
+    };
+
     // Функція для прокрутки до форми пошуку
     function scrollToSearch() {
         document.getElementById('searchSection').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Обробка пошуку
     document.addEventListener('DOMContentLoaded', function() {
-        const searchForm = document.getElementById('searchForm');
-        const searchInput = document.getElementById('searchInput');
-        const categorySelect = document.getElementById('categorySelect');
+        // Завантаження сайдбару
+        console.log('DOM loaded, trying to load sidebar...');
+        loadComponent('sidebar-container', 'components/sidebar.html');
 
-        // Обробник зміни категорії
-        categorySelect.addEventListener('change', function() {
-            if (this.value) {
-                window.location.href = this.value;
-            }
+        // Ініціалізація групової фільтрації
+        const specialistSelect = document.getElementById('specialistSelect');
+        const categorySelect = document.getElementById('categorySelect');
+        const searchForm = document.getElementById('searchForm');
+
+        // Обробник зміни спеціальності
+        specialistSelect.addEventListener('change', function() {
+            const selectedSpecialist = this.value;
+            updateCategoryOptions(selectedSpecialist);
         });
 
-        // Обробник форми пошуку
-        function handleSearch(event) {
-            event.preventDefault();
+        // Обробник відправки форми
+        if (searchForm) {
+            searchForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                handleSearch();
+            });
+        }
 
-            const searchTerm = searchInput.value.toLowerCase();
-            const selectedCategory = categorySelect.value;
+        function updateCategoryOptions(specialist) {
+            // Очищуємо список категорій
+            categorySelect.innerHTML = '<option value="">Оберіть категорію</option>';
 
-            // Якщо вибрана категорія
-            if (selectedCategory) {
-                window.location.href = selectedCategory;
-                return;
-            }
+            if (specialist && specialistCategories[specialist]) {
+                // Додаємо категорії для обраної спеціальності
+                specialistCategories[specialist].forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category;
+                    option.textContent = category;
+                    categorySelect.appendChild(option);
+                });
 
-            // Пошук за текстом
-            if (searchTerm) {
-                const specialists = {
-                    'фотограф': 'photographer.html',
-                    'дизайнер': 'designer.html',
-                    'розробник': 'developer.html',
-                    'економіст': 'economist.html',
-                    'hr': 'hr.html',
-                    'бізнес-аналітик': 'business-analyst.html',
-                    'відеограф': 'videographer.html',
-                    'smm-менеджер': 'smm.html',
-                    'smm': 'smm.html',
-                    'data analyst': 'data-analyst.html',
-                    'devops інженер': 'devOps.html',
-                    '3d дизайнер': '3d-designer.html'
-
-                };
-
-                for (let [key, value] of Object.entries(specialists)) {
-                    if (key.includes(searchTerm)) {
-                        window.location.href = value;
-                        return;
-                    }
-                }
-
-                // Якщо нічого не знайдено
-                alert('Спеціаліста не знайдено. Спробуйте інший запит або виберіть із списку.');
+                // Активуємо селект категорій
+                categorySelect.disabled = false;
+            } else {
+                // Деактивуємо селект категорій
+                categorySelect.disabled = true;
             }
         }
 
-        searchForm.addEventListener('submit', handleSearch);
-    });
-</script>
-</div>
-<script src="js/components.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('DOM loaded, trying to load sidebar...');
-        loadComponent('sidebar-container', 'components/sidebar.html');
+        function handleSearch() {
+            const selectedCategory = categorySelect.value;
+
+            if (!selectedCategory) {
+                alert('Будь ласка, оберіть категорію спеціаліста');
+                return;
+            }
+
+            // Знаходимо відповідну сторінку для категорії
+            const targetPage = categoryPages[selectedCategory];
+
+            if (targetPage) {
+                // Переходимо на відповідну сторінку
+                window.location.href = targetPage;
+            } else {
+                alert('Сторінка для цієї категорії ще не створена');
+            }
+        }
+
+        // Початкова деактивація селекту категорій
+        categorySelect.disabled = true;
     });
 </script>
 </body>
